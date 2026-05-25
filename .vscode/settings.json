@@ -1,0 +1,4 @@
+{
+  "python.defaultInterpreterPath": "${workspaceFolder}/econophysics/bin/python",
+  "jupyter.jupyterServerType": "local"
+}
