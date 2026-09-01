@@ -1,0 +1,112 @@
+% ============================================================================
+% PREAMBLE: Shared configuration and packages for the paper
+% ============================================================================
+
+% ---- DOCUMENT PACKAGES ----
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[a4paper, margin=1in]{geometry}
+
+% ---- MATHEMATICS & PHYSICS ----
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}  % For \dv, \pdv, \dd, etc.
+\usepackage{siunitx}  % For units formatting
+
+% ---- GRAPHICS & FIGURES ----
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+\graphicspath{{../figures/}}
+
+% ---- CITATIONS & BIBLIOGRAPHY ----
+\usepackage[square, numbers, sort&compress]{natbib}
+\bibliographystyle{plainnat}
+
+% ---- HYPERLINKS & CROSS-REFERENCES ----
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    urlcolor=blue,
+    bookmarksnumbered=true
+}
+
+% ---- CODE LISTINGS ----
+\usepackage{listings}
+\usepackage{xcolor}
+
+\lstset{
+    language=Python,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue}\bfseries,
+    commentstyle=\color{gray}\itshape,
+    stringstyle=\color{red},
+    backgroundcolor=\color{gray!10},
+    breaklines=true,
+    breakatwhitespace=true,
+    showstringspaces=false,
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    numbersep=5pt,
+    frame=single,
+    framerule=0.5pt,
+    captionpos=b,
+    tabsize=4
+}
+
+% ---- THEOREMS & PROOF ENVIRONMENTS ----
+\usepackage{amsthm}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[section]
+\newtheorem{example}{Example}[section]
+
+% ---- PHYSICS NOTATION (Custom Commands) ----
+\newcommand{\Temperature}{T}
+\newcommand{\Entropy}{S}
+\newcommand{\Money}{m}
+\newcommand{\Agents}{N}
+\newcommand{\TotalMoney}{M}
+\newcommand{\AvgMoney}{\langle m \rangle}
+\newcommand{\Prob}[1]{P\left(#1\right)}
+\newcommand{\Expected}[1]{\langle #1 \rangle}
+\newcommand{\MarkovChain}{\{X_n\}_{n \geq 0}}
+\newcommand{\GibbsEntropy}{S = -\sum_i p_i \ln p_i}
+\newcommand{\Boltzmann}{k_B}
+\newcommand{\Partition}{Z}
+
+% ---- DOCUMENT FORMATTING ----
+\usepackage{fancyhdr}
+\usepackage{setspace}
+\onehalfspacing
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\leftmark}
+\fancyhead[R]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% ---- CAPTIONS & FLOATS ----
+\usepackage{caption}
+\captionsetup{
+    font=small,
+    labelfont=bf,
+    justification=centering
+}
+
+% ---- APPENDIX ----
+\usepackage{appendix}
+
+% ============================================================================
+% END OF PREAMBLE
+% ============================================================================
