@@ -48,4 +48,45 @@ of interacting economic agents, econophysics has much
 common ground with the agent-based modeling and
 simulation \cite{Yakovenko2009}. 
 
+
+\subsection{Boltzmann-Gibbs Distribution of energy}
+
+The fundamental law of equilibrium statistical mechanics is the
+Boltzmann--Gibbs distribution. It states that the probability
+$P(\varepsilon)$ of finding a physical system or subsystem in a state
+with the energy $\varepsilon$ is given by the exponential function
+
+\begin{equation}
+    P(\varepsilon) = c e^{-\varepsilon/T},
+    \label{eq:boltzmann_distribution}
+\end{equation}
+
+where $T$ is the temperature, and $c$ is a normalizing constant.
+Here we set the Boltzmann constant $k_B$ to unity
+by choosing the energy units for measuring the physical temperature
+$T$. Then, the expectation value of any physical variable $x$ can be
+obtained as
+
+\begin{equation}
+    \langle x \rangle =
+    \frac{\sum_k x_k e^{-\varepsilon_k/T}}
+    {\sum_k e^{-\varepsilon_k/T}},
+    \label{eq:expectation_value}
+\end{equation}
+
+where the sum is taken over all states of the system. 
+Temperature is equal to the average energy per particle:
+$T \sim \langle \varepsilon \rangle$, up to a numerical coefficient
+of the order of $1$.
+
+Equation~\eqref{eq:boltzmann_distribution} can be derived in different
+way. One of the shortest derivations can be summarized as
+follows. Let us divide the system into two (generally unequal) parts.
+Then, the total energy is the sum of the parts:
+$\varepsilon = \varepsilon_1 + \varepsilon_2$, whereas the probability
+is the product of probabilities:
+$P(\varepsilon) = P(\varepsilon_1)P(\varepsilon_2)$. The only solution
+of these two equations is the exponential function
+\eqref{eq:boltzmann_distribution}.
+
 \newpage
