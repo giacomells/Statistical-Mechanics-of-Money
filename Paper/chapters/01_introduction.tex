@@ -9,25 +9,41 @@ The assumption is that money, like energy in a physical system, is conserved dur
 
 I conducted agent based simulations modeling economic transactions as random exchanges of money between agents, analogous to particle collisions in a gas. Under various transaction mechanisms (constant exchanges, fraction of individual wealth, fraction of system average), the simulated money distribution converges to an exponential form $\Prob{m} = \frac{1}{\Temperature} e^{-m/\Temperature}$, where $\Temperature = M/N$ represents the system's effective ``temperature'' (average wealth per agent).
 
-Three simulation models are analyzed:
+Two simulation models are analyzed:
 \begin{enumerate}
     \item \textbf{Basic money distribution} with no debt constraints
     \item \textbf{System with debt} allowing limited negative balances
 %    \item \textbf{Stock market extension} incorporating both cash and equity trades with price dynamics
 \end{enumerate}
 
-We demonstrate that \textbf{Gibbs entropy} correctly predicts equilibrium states and that the system evolves as a \textbf{Markov process} toward maximum entropy. 
+It's possible to demonstrate that \textbf{Gibbs entropy} correctly predicts equilibrium states and that the system evolves as a \textbf{Markov process} toward maximum entropy. 
 These results validate the hypothesis that economic inequality and wealth concentration emerge as natural equilibrium
 states when agents interact via random transactions, analogously to how physical systems spontaneously approach thermodynamic equilibrium.
 
-This paper connects fundamental concepts from statistical mechanics from Markov processes, Boltzmann-Gibbs distributions, Gibbs entropy, and dynamical systems theory
+This research connects fundamental concepts from statistical mechanics from Markov processes, Boltzmann-Gibbs distributions, Gibbs entropy, and dynamical systems theory
 to economics and the so called "econophysics" or "social physics", providing a computational validation of theoretical predictions.
 
 \vspace{1em}
 
 
 \subsection{Motivation}
+The term “econophysics” was introduced by analogy
+with similar terms, such as astrophysics, geophysics, and
+biophysics, which describe applications of physics to different fields.
 
-
+It should be emphasized that
+econophysics does not literally apply the laws of physics,
+such as Newton's laws or quantum mechanics, to humans,
+but rather uses mathematical methods developed in statistical
+physics to study properties of complex
+economic systems consisting of a large number of humans. 
+So, it may be considered as a branch of applied
+theory of probabilities.
+Econophysics distances itself from the verbose, narrative, and ideological style of
+political economy and is closer to econometrics in its
+focus. Studying mathematical models of a large number
+of interacting economic agents, econophysics has much
+common ground with the agent-based modeling and
+simulation \cite{Yakovenko2009}. 
 
 \newpage
