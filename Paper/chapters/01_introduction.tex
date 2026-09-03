@@ -3,20 +3,25 @@
 % ============================================================================
 
 \section{Introduction}
-This paper investigates the applicability of \textbf{statistical mechanics} to economic systems, specifically how money distribution in a society of interacting economic agents follows the \textbf{Boltzmann-Gibbs distribution}---a foundational principle from thermodynamics and statistical physics.
+This paper investigates the applicability of \textbf{statistical mechanics} to economic systems, specifically how money distribution in a society of interacting economic agents follows the \textbf{Boltzmann-Gibbs distribution}. 
+This is a foundational principle from thermodynamics and statistical physics. 
+The assumption is that money, like energy in a physical system, is conserved during transactions between agents.
 
-We conducted agent-based simulations modeling economic transactions as random exchanges of money between agents, analogous to particle collisions in a gas. Under various transaction mechanisms (constant exchanges, fraction of individual wealth, fraction of system average), the simulated money distribution converges to an exponential form $\Prob{m} = \frac{1}{\Temperature} e^{-m/\Temperature}$, where $\Temperature = M/N$ represents the system's effective ``temperature'' (average wealth per agent).
+I conducted agent based simulations modeling economic transactions as random exchanges of money between agents, analogous to particle collisions in a gas. Under various transaction mechanisms (constant exchanges, fraction of individual wealth, fraction of system average), the simulated money distribution converges to an exponential form $\Prob{m} = \frac{1}{\Temperature} e^{-m/\Temperature}$, where $\Temperature = M/N$ represents the system's effective ``temperature'' (average wealth per agent).
 
 Three simulation models are analyzed:
 \begin{enumerate}
     \item \textbf{Basic money distribution} with no debt constraints
     \item \textbf{System with debt} allowing limited negative balances
-    \item \textbf{Stock market extension} incorporating both cash and equity trades with price dynamics
+%    \item \textbf{Stock market extension} incorporating both cash and equity trades with price dynamics
 \end{enumerate}
 
-We demonstrate that \textbf{Gibbs entropy} correctly predicts equilibrium states and that the system evolves as a \textbf{Markov process} toward maximum entropy. These results validate the hypothesis that economic inequality and wealth concentration emerge as natural equilibrium states when agents interact via random transactions, analogous to how physical systems spontaneously approach thermodynamic equilibrium.
+We demonstrate that \textbf{Gibbs entropy} correctly predicts equilibrium states and that the system evolves as a \textbf{Markov process} toward maximum entropy. 
+These results validate the hypothesis that economic inequality and wealth concentration emerge as natural equilibrium
+states when agents interact via random transactions, analogously to how physical systems spontaneously approach thermodynamic equilibrium.
 
-This paper connects fundamental concepts from statistical mechanics---Markov processes, Boltzmann-Gibbs distributions, Gibbs entropy, and dynamical systems theory---to economics, providing a computational validation of theoretical predictions.
+This paper connects fundamental concepts from statistical mechanics from Markov processes, Boltzmann-Gibbs distributions, Gibbs entropy, and dynamical systems theory
+to economics and the so called "econophysics" or "social physics", providing a computational validation of theoretical predictions.
 
 \vspace{1em}
 
