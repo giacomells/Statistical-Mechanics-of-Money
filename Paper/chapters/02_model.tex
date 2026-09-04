@@ -12,6 +12,15 @@ The theoretical framework predicts that the wealth distribution converges to the
 One could assume that Boltzmann's derivation of the energy distribution can be applied to other statistical systems with a conserved quantity, such as money.
 Indeed, we can consider the economy as a closed system with a fixed number of agents $\Agents$ and a total amount of money $\TotalMoney$.
 Therefore, the total money in the system is conserved.
+As a starting point, we can consider a simple model where agents exchange money through random transactions, and the total amount of money remains constant.
 
-\subsubsection{Markov Process Formulation}
-\newpage
+Introducing the concept of money conservation we can assume the model \textbf{without debt}, where agents cannot have negative balances.
+So the conditions for this model are:
+\begin{itemize}
+    \item $\displaystyle \sum_{i=1}^{\Agents} m_i = \TotalMoney$.
+    \item $m_i \geq 0$, for $i = 1, \ldots, \Agents$.
+    \item $\delta m_i = -\delta m_j$, for $i \neq j$.
+    \item $\delta_m < m_i$.
+\end{itemize}
+
+
