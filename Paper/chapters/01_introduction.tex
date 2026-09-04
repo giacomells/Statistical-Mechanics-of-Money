@@ -89,4 +89,54 @@ $P(\varepsilon) = P(\varepsilon_1)P(\varepsilon_2)$. The only solution
 of these two equations is the exponential function
 \eqref{eq:boltzmann_distribution}.
 
+A more sophisticated derivation, proposed by Boltzmann himself, uses
+the concept of \textbf{entropy}. Let us consider $N$ particles with the total
+energy $E$. Let us divide the energy axis into small intervals (bins)
+of width $\Delta\varepsilon$ and count the number of particles $N_k$
+having the energies from $\varepsilon_k$ to $\varepsilon_k +
+\Delta\varepsilon$. The ratio $N_k/N = P_k$ gives the probability for
+a particle to have the energy $\varepsilon_k$. Let us now calculate the
+\textbf{multiplicity} $W$, which is the number of permutations of the particles
+between different energy bins such that the occupation numbers of the
+bins do not change. This quantity is given by the combinatorial formula
+in terms of the factorials
+
+\begin{equation}
+    W = \frac{N!}{N_1!N_2!N_3!\ldots}.
+    \label{eq:multiplicity}
+\end{equation}
+
+The logarithm of multiplicity is called the entropy $S = \ln W$. In the
+limit of large numbers, the entropy per particle can be written in the
+following form using the Stirling approximation for the factorials
+
+\begin{equation}
+    \frac{S}{N}
+    =
+    -\sum_k \frac{N_k}{N}
+    \ln\left(\frac{N_k}{N}\right)
+    =
+    -\sum_k P_k \ln P_k.
+    \label{eq:entropy}
+\end{equation}
+
+Now we would like to find what distribution of particles between
+different energy states has the highest entropy, i.e., the highest
+multiplicity, provided that the total energy of the system,
+
+\begin{equation}
+    E = \sum_k N_k \varepsilon_k,
+\end{equation}
+
+has a fixed value. Solution of this problem can be easily obtained using
+the method of Lagrange multipliers \cite{...}, and the answer gives the
+exponential distribution \eqref{eq:boltzmann_distribution}.
+
+The same result can be derived from the \textbf{ergodic theory}, which
+says that the many-body system occupies all possible states of a given
+total energy with equal probabilities. Then it is straightforward to
+show \cite{...} that the probability distribution of the energy of an
+individual particle is given by Eq.~\eqref{eq:boltzmann_distribution}.
+
+
 \newpage
