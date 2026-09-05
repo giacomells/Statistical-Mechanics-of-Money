@@ -32,3 +32,17 @@ For this reason, we can assume that the probability of finding an agent with mon
 \end{equation}
 where $c$ is a normalization constant and $\Temperature$ is the effective temperature of the system: $T = \TotalMoney / N$, which is average money per agent.
 
+The \textbf{entropy} of the system is defined as:
+\begin{equation}
+    S = -\sum_{i=1}^{\Agents} \Prob{m_i} \log \Prob{m_i}.
+\end{equation}
+The \textbf{equilibrium} is reached when the entropy is maximized when the system "cools off" to the Boltzmann-Gibbs distribution.
+
+Many different kinds of transactions can be considered, in this simulation and report only two were used:
+\begin{itemize}
+    \item \textbf{Constant transactions: $\Delta m = 1$} where a fixed amount of money is exchanged between agents. 
+    \item \textbf{Fractional transactions} where a fraction $\gamma$ of the agent's money is exchanged, the two agents will exchange
+                                            only a portion of their money. This mechanism show how richer agents can exchange more money than poorer agents, and it is more realistic.
+\end{itemize}
+
+Both mechanisms showed the same behavior. They followed the Boltzmann-Gibbs distribution.
