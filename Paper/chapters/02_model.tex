@@ -39,7 +39,7 @@ The \textbf{entropy} of the system is defined as:
 \end{equation}
 The \textbf{equilibrium} is reached when the entropy is maximized when the system "cools off" to the Boltzmann-Gibbs distribution.
 
-\subsection{Transaction Mechanisms}
+\subsubsection{Transaction Mechanisms}
 Many different kinds of transactions can be considered, such as:
 \begin{itemize}
     \item \textbf{Constant transactions: $\Delta m = 1$} where a fixed amount of money is exchanged between agents. 
@@ -47,7 +47,10 @@ Many different kinds of transactions can be considered, such as:
                                                 $\Delta m = r \cdot \frac{m_i + m_j}{2}$, 
     \item \textbf{Fractional transactions} where a fraction $\gamma$ of the agent's money is exchanged, the two agents will exchange
                                             only a portion of their money. This mechanism show how richer agents can exchange more money than poorer agents, and it is more realistic.
+                                            Therefore we can add a saving propensity $\gamma$ to the model, where agents save a fraction of their money before exchanging it.
+
 \end{itemize}
+
 
 \subsection{The different models}
 Different assumptions were made in the literature to model the money exchange between agents.
@@ -57,12 +60,63 @@ The simplest model has constant transactions and no debt can be accumulated. Thi
 \subsubsection{Model with debt}
 The exact mechanisms of limiting debt in the real economy are complicated and obscured.
 In this scenario, debt is introduced in the model \cite{yakovenko2012statistical}. 
+Debt may be considered as negative money.
+When an agent borrows money from a bank (considered here as a big reservoir of money), the cash balance of
+the agent (positive money) increases, but the agent also acquires a debt
+obligation (negative money), so the total balance (net worth) of the
+agent remains the same, and the conservation law of total money
+(positive and negative) is satisfied.
+Any stable economic system must have a mechanism
+preventing unlimited borrowing and unlimited debt. Otherwise, agents can
+buy any products without producing anything in exchange by simply going
+into unlimited debt.
+
+A simple model was considered where the maximal debt of any agent is limited by a certain
+amount $m_d$. This means that the boundary condition $m_i \geq 0$ is now
+replaced by the condition $m_i \geq -m_d$ for all agents $i$.
+Not surprisingly, the stationary money distribution again has
+the exponential shape, but now with the boundary condition at
+$m=-m_d$ and the higher money temperature
+\begin{equation}
+    T_d = m_d + \frac{M}{N}.
+\end{equation}
+By allowing agents to go into debt up to $m_d$, we effectively increase
+the amount of money available to each agent by $m_d$. So, the money
+temperature, which is equal to the average amount of effectively
+available money per agent, increases. Therefore, we see that debt does not violate the conservation law of money, but
+rather modifies boundary conditions for $P(m)$.
+% WE MIGHT CONSIDER A MODEL WHERE THERE'S AN INTEREST RATE ON DEBT, SO THAT THE DEBT IS NOT FREE.
+
+One way of limiting the total debt in the economy is the so-called
+required reserve ratio $r$ \cite{refmcconnell1986contemporary37}. Every bank is required by law
+to set aside a fraction $r$ of the money deposited into the bank, and
+this reserved money cannot be loaned further. 
+If the initial amount of
+money in the system (the monetary base) is $M_0$, then with loans and
+borrowing the total amount of positive money available to agents is 
+\begin{equation}
+    M = \frac{M_0}{r},
+\end{equation}
+where the factor $1/r$ is called the money multiplier. 
+This is how banks "create money" in the modern economy. 
+They do so by creating debt obligations in the system, where the maximal debt(limited by the factor $1/r$) can be:
+\begin{equation}
+    M_d = M - M_0 = \frac{M_0}{r} - M_0 = M_0 \left( \frac{1}{r} - 1 \right) = M_0 \frac{1-r}{r}.
+\end{equation}  
+
+When the debt is maximized, the money distribution is again exponential but now "double sided".
+Both total amounts of positive $\frac{M_0}{r}$ and negative $\frac{M_0(1-r)}{r}$ money are conserved separately
+since money circulate between the agents in the
+system, so there are eﬀectively two conservation laws for
+each of them.
+Therefore we expect two different Boltzmann-Gibbs distributions for positive and negative money, with two different temperatures:
+\begin{equation}
+    T_+ = \frac{M}{N} = \frac{M_0}{rN}, \quad T_- = \frac{M_d}{N} = \frac{M_0(1-r)}{rN}.
+\end{equation}  
 
 
 
-Therefore we can add a saving propensity $\gamma$ to the model, where agents save a fraction of their money before exchanging it.
-
-\subsection{Saving Propensity}
+\subsubsection{Saving Propensity}
 A different model \cite{ispolatov1998wealth} was introduced as a concept of saving propensity, it has the name of multiplicative asset exchange model.
 This model perfectly fits the money conservation, thus it considers that agents will exchange only a fraction of their money, and the rest will be saved.
 To make it simple, each agent exchanges a fraction $\gamma$ of their money, where $\gamma$ is a fixed number between 0 and 1:
@@ -82,4 +136,3 @@ From Boltzmann-Gibbs kinetic theory, \cite{ispolatov1998wealth} derived the rela
 \end{equation}
 which shows that if payers spend a relatively small fraction of their money, $\gamma < 1/2$, so the low money population is suppressed $P(m = 0) \rightarrow 0$, and the distribution has a peak at a non-zero value of money. 
 
-\subsection{Model with debt}
