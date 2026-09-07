@@ -38,11 +38,26 @@ The \textbf{entropy} of the system is defined as:
 \end{equation}
 The \textbf{equilibrium} is reached when the entropy is maximized when the system "cools off" to the Boltzmann-Gibbs distribution.
 
-Many different kinds of transactions can be considered, in this simulation and report only two were used:
+\subsection{Transaction Mechanisms}
+Many different kinds of transactions can be considered, such as:
 \begin{itemize}
     \item \textbf{Constant transactions: $\Delta m = 1$} where a fixed amount of money is exchanged between agents. 
+    \item \textbf{Fraction of Pair's Average:} A random fraction of the average money of the pair $\frac{m_i + m_j}{2}$ is exchanged:
+                                                $\Delta m = r \cdot \frac{m_i + m_j}{2}$, 
     \item \textbf{Fractional transactions} where a fraction $\gamma$ of the agent's money is exchanged, the two agents will exchange
                                             only a portion of their money. This mechanism show how richer agents can exchange more money than poorer agents, and it is more realistic.
 \end{itemize}
 
-Both mechanisms showed the same behavior. They followed the Boltzmann-Gibbs distribution.
+\subsection{The different models}
+Different assumptions were made in the literature to model the money exchange between agents.
+The aim it's to find a model that can reproduce the empirical wealth distribution observed in real economies.
+\subsubsection{Model without debt}
+The simplest model has constant transactions and no debt can be accumulated. This model leads to the Boltzmann-Gibbs distribution as previously discussed.
+\subsubsection{Model with debt}
+The exact mechanisms of limiting debt in the real economy are complicated and obscured.
+In this scenario, debt is introduced in the model \cite{yakovenko2012statistical}. 
+
+
+
+
+Therefore we can add a saving propensity $\lambda$ to the model, where agents save a fraction of their money before exchanging it.
