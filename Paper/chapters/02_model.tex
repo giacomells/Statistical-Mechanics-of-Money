@@ -29,6 +29,7 @@ to the energy exchange in a physical system.
 For this reason, we can assume that the probability of finding an agent with money $m$ is given by the Boltzmann-Gibbs distribution:
 \begin{equation}
     \Prob{m} = c e^{-m/\Temperature},
+\label{eq:boltzmann-gibbs}
 \end{equation}
 where $c$ is a normalization constant and $\Temperature$ is the effective temperature of the system: $T = \TotalMoney / N$, which is average money per agent.
 
@@ -59,5 +60,26 @@ In this scenario, debt is introduced in the model \cite{yakovenko2012statistical
 
 
 
+Therefore we can add a saving propensity $\gamma$ to the model, where agents save a fraction of their money before exchanging it.
 
-Therefore we can add a saving propensity $\lambda$ to the model, where agents save a fraction of their money before exchanging it.
+\subsection{Saving Propensity}
+A different model \cite{ispolatov1998wealth} was introduced as a concept of saving propensity, it has the name of multiplicative asset exchange model.
+This model perfectly fits the money conservation, thus it considers that agents will exchange only a fraction of their money, and the rest will be saved.
+To make it simple, each agent exchanges a fraction $\gamma$ of their money, where $\gamma$ is a fixed number between 0 and 1:
+\begin{equation}
+    \Delta m = \gamma m_i.
+\end{equation}
+
+In this model, the stationary distribution of money is not the Boltzmann-Gibbs distribution, but a Gamma distribution:
+\begin{equation}
+    \Prob{m} = c m^{\beta} e^{-m/\Temperature},
+\label{eq:gamma-distribution}
+\end{equation}
+where it differs from the exponential~\ref{eq:boltzmann-gibbs} distribution by the factor $m^{\beta}$, where $\beta$ is a parameter that depends on the saving propensity $\gamma$.
+From Boltzmann-Gibbs kinetic theory, \cite{ispolatov1998wealth} derived the relation between $\beta$ and $\gamma$:
+\begin{equation}
+    \beta = - 1 - ln(2)/ln(1-\gamma).
+\end{equation}
+which shows that if payers spend a relatively small fraction of their money, $\gamma < 1/2$, so the low money population is suppressed $P(m = 0) \rightarrow 0$, and the distribution has a peak at a non-zero value of money. 
+
+\subsection{Model with debt}
