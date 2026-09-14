@@ -16,8 +16,8 @@ It is possible to see the results in Figure \ref{fig:NoDebtImage}, where the his
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.4\textwidth]{NoDebtImage.png}
-    \caption{The histogram shows the money distribution of agents after a large number of transactions, while the red line represents the theoretical Boltzmann-Gibbs distribution.
-                The simulation was performed with $N=3500$, $M = 10 000$, and $\Delta m = 1$. The simulation was run for $10^6$ transactions.}
+    \caption{The histogram shows the money distribution of agents after a $10^6$ number of transactions, while the red line represents the theoretical Boltzmann-Gibbs distribution.
+                The simulation was performed with $N=3500$, $M = 10 000$, and $\Delta m = 1$. Agents in this scenario can't have debt.}
     \label{fig:NoDebtImage}
 \end{figure}
 
@@ -25,7 +25,15 @@ Later on it will be discussed how the richer agents don't really follow Boltzman
 These agents are not in equilibrium with the rest of the system, therefore they are not part of the thermalized system.
 
 \subsection{Money Distribution with Debt}
-
+The situation now is similar but in this case the agents can have negative balances.
+As it is shown in Fig.~\ref{fig:DebtImage}, after many interactions, the population seems to follow a Boltzmann-Gibbs distribution.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{DebtImage.png}
+    \caption{The histogram shows the money distribution of agents after a $10^7$ number of transactions, while the red line represents the theoretical Boltzmann-Gibbs distribution.
+                The simulation was performed with $N=1000$, $M = 30 000$, and $\Delta m = 1$. Agents in this scenario can have negative balances.}
+    \label{fig:DebtImage}
+\end{figure}
 
 \subsection{Power Law Distribution}
 

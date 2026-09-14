@@ -138,6 +138,42 @@ def simulate_with_debt(N=500, M=5e5, steps=4e5, md=800, transaction_type='consta
             
     return agents
 
+
+def simulate_with_debt_shifted(N=500, M=5e5, steps=4e5, md=800, transaction_type='constant'):
+    """
+    Simulate money with a maximum debt limit using shifted wealth.
+
+    The internal wealth variable is x = money + md, so x is always
+    nonnegative. The returned array is converted back to actual money.
+    """
+    N = int(N)
+    steps = int(steps)
+    md = float(md)
+    shifted_agents = np.ones(N) * (M / N + md)
+
+    for _ in range(steps):
+        i = np.random.randint(0, N)
+        j = np.random.randint(0, N)
+        if i == j:
+            continue
+
+        if transaction_type == 'constant':
+            delta = 1
+        elif transaction_type == 'fraction_pair':
+            mean_pair = (shifted_agents[i] + shifted_agents[j]) / 2
+            delta = np.random.rand() * mean_pair
+        elif transaction_type == 'fraction_system':
+            delta = np.random.rand() * np.mean(shifted_agents)
+        else:
+            raise ValueError("Invalid transaction type.")
+
+        if shifted_agents[i] >= delta:
+            shifted_agents[i] -= delta
+            shifted_agents[j] += delta
+
+    return shifted_agents - md
+
+
 def simulate_entropy_with_debt(N=500, M=5e5, steps=2000, md=800, transaction_type='constant', bins=500, max_money=5000):
     """
     Simulate the evolution of entropy with a maximum debt limit (md).
