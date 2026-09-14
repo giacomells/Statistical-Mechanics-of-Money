@@ -4,8 +4,29 @@
 
 \section{Results}
 
-\subsection{Scenario 1: Basic Money Distribution}
+\subsection{Basic Money Distribution}
 
-[Results content to be filled with figures and analysis...]
+In this scenario, we consider a simple model of money distribution among agents without debt. 
+The total money of the system is conserved, and no agent can have a negative balance.
+The agents engage with each other randomly but always with a fixed amount of money in each transaction.
 
-\newpage
+Said so, we can assume that the money distribution will converge to the Boltzmann-Gibbs distribution as predicted by the theoretical framework.
+It is possible to see the results in Figure \ref{fig:NoDebtImage}, where the histogram of the money distribution is plotted along with the theoretical Boltzmann-Gibbs distribution.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{NoDebtImage.png}
+    \caption{The histogram shows the money distribution of agents after a large number of transactions, while the red line represents the theoretical Boltzmann-Gibbs distribution.
+                The simulation was performed with $N=3500$, $M = 10 000$, and $\Delta m = 1$. The simulation was run for $10^6$ transactions.}
+    \label{fig:NoDebtImage}
+\end{figure}
+
+Later on it will be discussed how the richer agents don't really follow Boltzmann-Gibbs distribution, but they follow a power law distribution, as observed in real economies.
+These agents are not in equilibrium with the rest of the system, therefore they are not part of the thermalized system.
+
+\subsection{Money Distribution with Debt}
+
+
+\subsection{Power Law Distribution}
+
+
