@@ -25,15 +25,25 @@ Later on it will be discussed how the richer agents don't really follow Boltzman
 These agents are not in equilibrium with the rest of the system, therefore they are not part of the thermalized system.
 
 \subsection{Money Distribution with Debt}
-The situation now is similar but in this case the agents can have negative balances.
+The situation now is similar but in this case the agents can have negative balances up to a maximal threshold debt~($md$).
 As it is shown in Fig.~\ref{fig:DebtImage}, after many interactions, the population seems to follow a Boltzmann-Gibbs distribution.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.4\textwidth]{DebtImage.png}
     \caption{The histogram shows the money distribution of agents after a $10^7$ number of transactions, while the red line represents the theoretical Boltzmann-Gibbs distribution.
-                The simulation was performed with $N=1000$, $M = 30 000$, and $\Delta m = 1$. Agents in this scenario can have negative balances.}
+                The simulation was performed with $N=1000$, $M = 30 000$, and $\Delta m = 1$. Agents in this scenario can have negative balances and the maximal debt is $md = 50$.}
     \label{fig:DebtImage}
 \end{figure}
+
+One way of limiting the total debt in the economy, as we explained in section \ref{sec:debtModel}, is the so-called required reserve ratio $r$~cite{mcconnell1984economics}.
+Every bank is required by law to set aside a fraction $r$ of the money deposited into the bank, and this reserved money cannot be loaned further.
+
+
+
+
+
+
+\subsection{Money Distribution with Saving Propensity}
 
 \subsection{Power Law Distribution}
 
