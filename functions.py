@@ -174,6 +174,54 @@ def simulate_with_debt_shifted(N=500, M=5e5, steps=4e5, md=800, transaction_type
     return shifted_agents - md
 
 
+def simulate_double_sided(N=1000, M0=3000, r=0.5, steps=1e6, transaction_type='constant'):
+    """
+    Simulate separately conserved positive-money and debt pools.
+
+    The positive pool contains M0 / r and the debt pool contains
+    M0 * (1 - r) / r. Returned balances are positive for the first pool
+    and negative for the debt pool.
+    """
+    N = int(N)
+    steps = int(steps)
+    M0 = float(M0)
+    r = float(r)
+
+    if N < 2:
+        raise ValueError("N must be at least 2.")
+    if M0 < 0:
+        raise ValueError("M0 must be nonnegative.")
+    if not 0 < r < 1:
+        raise ValueError("r must be between 0 and 1 for a double-sided model.")
+
+    N_positive = N // 2
+    N_negative = N - N_positive
+    positive_total = M0 / r
+    debt_total = M0 * (1 - r) / r
+
+    positive = np.full(N_positive, positive_total / N_positive)
+    debt = np.full(N_negative, debt_total / N_negative)
+
+    for _ in range(steps):
+        pool = positive if np.random.rand() < 0.5 else debt
+        i, j = np.random.choice(len(pool), size=2, replace=False)
+
+        if transaction_type == 'constant':
+            delta = 1
+        elif transaction_type == 'fraction_pair':
+            delta = np.random.rand() * (pool[i] + pool[j]) / 2
+        elif transaction_type == 'fraction_system':
+            delta = np.random.rand() * np.mean(pool)
+        else:
+            raise ValueError("Invalid transaction type.")
+
+        if pool[i] >= delta:
+            pool[i] -= delta
+            pool[j] += delta
+
+    return np.concatenate([positive, -debt])
+
+
 def simulate_entropy_with_debt(N=500, M=5e5, steps=2000, md=800, transaction_type='constant', bins=500, max_money=5000):
     """
     Simulate the evolution of entropy with a maximum debt limit (md).

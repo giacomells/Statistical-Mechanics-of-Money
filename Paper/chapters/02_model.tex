@@ -116,6 +116,22 @@ Therefore we expect two different Boltzmann-Gibbs distributions for positive and
     T_+ = \frac{M}{N} = \frac{M_0}{rN}, \quad T_- = \frac{M_d}{N} = \frac{M_0(1-r)}{rN}.
 \end{equation}  
 
+In the end we can write the probability distribution of money as:
+\begin{equation}
+P(m) =
+\begin{cases}
+\displaystyle
+\frac{N_-}{N}\frac{1}{T_-}
+\exp\left(\frac{m}{T_-}\right),
+& m < 0, \\[1em]
+\displaystyle
+\frac{N_+}{N}\frac{1}{T_+}
+\exp\left(-\frac{m}{T_+}\right),
+& m > 0.
+\end{cases}
+\label{eq:double-sided-boltzmann-gibbs}
+\end{equation}
+
 
 
 \subsubsection{Proportional transfers} %Saving propensity could be added to the model, where agents save a fraction of their money before exchanging it.
