@@ -37,8 +37,28 @@ As it is shown in Fig.~\ref{fig:DebtImage}, after many interactions, the populat
 
 One way of limiting the total debt in the economy, as we explained in section \ref{sec:debtModel}, is the so-called required reserve ratio $r$~\cite{xi2005required}.
 Every bank is required by law to set aside a fraction $r$ of the money deposited into the bank, and this reserved money cannot be loaned further.
+To simulate this, we implement a two-pool monetary model in which wealth and debt are treated as separate conserved sectors. The population is split into two groups of size $N_+ = N/2$ and $N_- = N-N_+$, initialized with
+\[
+W_+ = \frac{M_0}{r}, \qquad W_- = \frac{M_0(1-r)}{r},
+\]
+so that the total net wealth is $W_+ - W_- = M_0$,
 
-
+while the positive and debt pools remain separately conserved. At each step, one pool is chosen at random and a pair of agents is selected; a transfer
+\[
+\Delta = 
+\begin{cases}
+1, & \text{constant}\\
+\eta \,\frac{x_i+x_j}{2}, & \text{fraction-pair}\\
+\eta \,\bar{x}, & \text{fraction-system},
+\end{cases}
+\qquad 0\le \eta \le 1,
+\]
+is applied only if the payer can afford it. The output is then
+\[
+(x_1,\ldots,x_{N_+},-y_1,\ldots,-y_{N_-}),
+\]
+so that the positive side is represented by positive balances and the debt side by negative balances. 
+This construction allows one to study a distribution with both positive and negative wealth without allowing direct transfers between the two sectors.
 
 
 
