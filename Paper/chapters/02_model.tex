@@ -51,6 +51,19 @@ Many different kinds of transactions can be considered, such as:
 
 \end{itemize}
 
+Therefore we can reassume the transaction mechanisms as:
+\[
+\Delta m =
+\begin{cases}
+1, & \text{constant exchange},\\[4pt]
+\eta \dfrac{x_i+x_j}{2}, & \text{fraction of pair average},\\[8pt]
+\eta \bar{x}, & \text{fraction of system average},
+\end{cases}
+\qquad 0\le \eta \le 1.
+\]
+
+Obviously, the transaction is accepted only if the payer has sufficient funds in the chosen pool.
+
 
 \subsection{The different models}
 Different assumptions were made in the literature to model the money exchange between agents.
@@ -106,31 +119,46 @@ They do so by creating debt obligations in the system, where the maximal debt(li
     M_d = M - M_0 = \frac{M_0}{r} - M_0  = M_0 \frac{1-r}{r}.
 \end{equation}  
 
+
+
+
 When the debt is maximized, the money distribution is again exponential but now "double sided".
 Both total amounts of positive $\frac{M_0}{r}$ and negative $\frac{M_0(1-r)}{r}$ money are conserved separately
 since money circulate between the agents in the
 system, so there are eﬀectively two conservation laws for
 each of them.
-Therefore we expect two different Boltzmann-Gibbs distributions for positive and negative money, with two different temperatures:
-\begin{equation}
-    T_+ = \frac{M}{N} = \frac{M_0}{rN}, \quad T_- = \frac{M_d}{N} = \frac{M_0(1-r)}{rN}.
-\end{equation}  
 
-In the end we can write the probability distribution of money as:
-\begin{equation}
-P(m) =
-\begin{cases}
-\displaystyle
-\frac{N_-}{N}\frac{1}{T_-}
-\exp\left(\frac{m}{T_-}\right),
-& m < 0, \\[1em]
-\displaystyle
-\frac{N_+}{N}\frac{1}{T_+}
-\exp\left(-\frac{m}{T_+}\right),
-& m > 0.
-\end{cases}
-\label{eq:double-sided-boltzmann-gibbs}
-\end{equation}
+Let $r\in(0,1)$ denote the fraction of agents in the positive sector and $1-r$ the fraction in the debt sector. The populations are initialized as
+\[
+N_+ = rN, \qquad N_- = (1-r)N,
+\]
+and the corresponding total amounts of money are
+\[
+M_+ = \frac{M_0}{r}, \qquad M_- = \frac{M_0(1-r)}{r}.
+\]
+This choice ensures that the total net wealth remains
+\[
+M_+ - M_- = \frac{M_0}{r} - \frac{M_0(1-r)}{r} = M_0.
+\]
+Hence the system has a positive money sector and a negative debt sector, while preserving the net conserved amount $M_0$.
+
+
+The two pools evolve independently, and at the end the debt pool is reflected to negative values:
+\[
+(x_1,\dots,x_{N_+},-y_1,\dots,-y_{N_-}).
+\]
+
+This construction produces a bimodal distribution with a positive branch and a negative branch, separated by a zero-crossing at $m=0$. The parameter $r$ controls the relative weight of the two sectors. To determine the value of the reverse ratio that aligns the two branches at the origin, we impose the matching condition
+\[
+p_+(0)=p_-(0),
+\]
+where the two densities are
+\[
+P(m_+) = \frac{N_+}{N}\frac{1}{T_+} e^{-m_+/T_+}, \qquad m_+\ge 0,
+\]
+\[
+P(m_-) = \frac{N_-}{N}\frac{1}{T_-} e^{m_-/T_-}, \qquad m_-\le 0.
+\]
 
 
 
