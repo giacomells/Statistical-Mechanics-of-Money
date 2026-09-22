@@ -343,3 +343,38 @@ def simulate_entropy_with_debt(N=500, M=5e5, steps=2000, md=800, transaction_typ
 
     time = np.arange(0, steps + 1)
     return time, S_values
+
+
+def simulate_proportional_money_transfer(
+    N=500,
+    M=5e5,
+    steps=4e5,
+    gamma=0.1,
+):
+    """
+    Simulate a no-debt multiplicative asset-exchange model.
+
+    In each transaction, a payer transfers the fixed fraction
+    gamma of their current money to a randomly chosen receiver.
+    """
+    N = int(N)
+    steps = int(steps)
+    gamma = float(gamma)
+
+    if N < 2:
+        raise ValueError("N must be at least 2.")
+    if M < 0:
+        raise ValueError("M must be nonnegative.")
+    if not 0 <= gamma <= 1:
+        raise ValueError("gamma must be between 0 and 1.")
+
+    agents = np.full(N, M / N, dtype=float)
+
+    for _ in range(steps):
+        payer, receiver = np.random.choice(N, size=2, replace=False)
+        delta = gamma * agents[payer]
+
+        agents[payer] -= delta
+        agents[receiver] += delta
+
+    return agents
