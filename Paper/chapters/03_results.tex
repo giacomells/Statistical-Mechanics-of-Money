@@ -40,41 +40,9 @@ As it is shown in Fig.~\ref{fig:DebtImage}, after many interactions, the populat
 \end{figure}
 
 One way of limiting the total debt in the economy, as we explained in section \ref{sec:debtModel}, is the so-called required reserve ratio $r$~\cite{xi2005required}.
+The value of r was set to $r = 0.618$ in order to have the two branches of the double-sided Boltzmann-Gibbs distribution meet at the origin.
+The computation of this value is shown in Appendix \ref{app:mathematics}.
 
-
-
-To have matching populations at $m=0$, the condition $P(m_+)=P(m_-)$ reduces to
-\[
-\frac{N_+}{T_+} = \frac{N_-}{T_-},
-\]
-with
-\[
-T_+ = \frac{M_+}{N_+}, \qquad T_- = \frac{M_-}{N_-}.
-\]
-Using the definitions of the two sectors,
-\[
-N_+ = rN, \qquad N_- = (1-r)N,
-\]
-\[
-M_+ = \frac{M_0}{r}, \qquad M_- = \frac{M_0(1-r)}{r},
-\]
-we obtain
-\[
-T_+ = \frac{M_0}{r^2 N}, \qquad T_- = \frac{M_0}{rN}.
-\]
-Substituting these expressions into the matching condition yields
-\[
-r \cdot \frac{r^2N}{M_0} = (1-r)\cdot \frac{rN}{M_0},
-\]
-which simplifies to
-\[
-r^2 + r - 1 = 0.
-\]
-Therefore the reverse ratio that makes the two distributions meet at the origin is
-\[
-r = \frac{\sqrt{5}-1}{2} \approx 0.618.
-\]
-This is the value used in the simulations to compare the positive and negative branches of the double-sided Boltzmann-Gibbs distribution.
 The results are shown in Fig.~\ref{fig:ReverseRatioImage}, where the histogram of the money distribution is plotted along with the theoretical double-sided Boltzmann-Gibbs distribution.
 \begin{figure}[H]
     \centering
