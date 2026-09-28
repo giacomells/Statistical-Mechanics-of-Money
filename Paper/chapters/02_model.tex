@@ -228,16 +228,11 @@ When Eq.~(\ref{eq:boltzmann-kinetic}) is satisfied, the detailed balance conditi
 Eq.~(\ref{eq:boltzmann-kinetic}) reduces to the equation
 $P(m)P(m') = P(m-\Delta)P(m'+\Delta)$,
 because the factors $f$ cancel out. The only solution of this equation
-is the exponential function
-
-\begin{equation}
-    P(m) = c\exp(-m/T_m),
-\end{equation}
-
-so the Boltzmann-Gibbs distribution is the stationary solution of the
+is the exponential function $P(m) = c\exp(-m/T_m)$. So the Boltzmann-Gibbs distribution is the stationary solution of the
 Boltzmann kinetic equation. 
 
-As previously discussed, in the case of proportional transfers~(\ref{eq:proportional-transfers}), the time-reversal symmetry is broken, and the stationary distribution is indeed not a Boltzmann-Gibbs distribution, but a Gamma distribution.
+As previously discussed, in the case of proportional transfers~(\ref{eq:proportional-transfers}), the time-reversal symmetry is broken, 
+and the stationary distribution is indeed not a Boltzmann-Gibbs distribution, but a Gamma distribution.
 Indeed the payer pays a deterministic fraction of his money, but
 the receiver receives a random amount from a random
 agent, so their roles are not interchangeable.
@@ -250,3 +245,49 @@ We can state that for all conservative
 models that have time-reversal symmetry, the stationary
 distribution is exponential and does not depend on the
 details of the model.
+
+\subsection{Statistical Mechanics of Wealth}
+\label{sec:wealth}
+One can argue that wealth $w_i$ is equal to money $m_i$ plus
+the other property that an agent i has. 
+Money (paper cash, bank accounts) is generally liquid and countable. 
+However, the other property
+is not immediately liquid and has to be sold first (con-
+verted into money) to be used for other purchases. In
+order to estimate the monetary value of property, one
+needs to know the price p. In the simplest model, let us
+consider just one type of property, say, stocks s. Then
+the wealth of an agent i is given by the formula
+\begin{equation}
+    w_i = m_i + p s_i,
+\end{equation}
+where $s_i$ is the number of stocks owned by the agent i. 
+It is assumed that the price p is the same for all agents.
+
+It is reasonable to start with a model where both the
+total money $M= \sum_i m_i$ and the total stock $S= \sum_i s_i$
+are conserved.
+Although M and S are conserved, the total wealth $W= \sum_i w_i$
+is generally not conserved, because of price fluctuation.
+Here the wealth $w_i$ of an agent i, not participating in any transactions, may
+change when transactions between other agents establish
+a new price $p$. 
+Moreover, the wealth $w_i$ of an agent i does
+not change after a transaction with an agent j. Indeed,
+in exchange for paying money $\Delta m$, agent i receives the
+stock $\Delta s = \Delta m/p$, so her total wealth (remains the
+same. In principle, the agent can instantaneously sell the
+stock back at the same price and recover the money paid.
+
+Many models~(\cite{silver2002statistical, lux2005emergent}, chatterjee2006kinetic) 
+that aim to describe the price fluctuations of $p$ 
+introducing a demand-supply mechanism, where the price is determined by the balance between supply and demand,
+demonstrated via computer simulations and proved analytically
+using the theory of Markov processes that the stationary
+distribution $P(w)$ of wealth $w$ is given by
+the Gamma distribution. 
+In general
+
+\subsubsection{Wealth growth as a stoachastic process}
+\label{sec:wealth-growth}
+
