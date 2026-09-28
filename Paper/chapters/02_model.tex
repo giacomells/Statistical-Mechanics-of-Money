@@ -102,7 +102,7 @@ rather modifies boundary conditions for $P(m)$.
 % WE MIGHT CONSIDER A MODEL WHERE THERE'S AN INTEREST RATE ON DEBT, SO THAT THE DEBT IS NOT FREE.
 
 One way of limiting the total debt in the economy is the so-called
-required reserve ratio $r$ \cite{refmcconnell1986contemporary37}. Every bank is required by law
+required reserve ratio $r$ \cite{mcconnell1986contemporary}. Every bank is required by law
 to set aside a fraction $r$ of the money deposited into the bank, and
 this reserved money cannot be loaned further. 
 If the initial amount of
@@ -136,9 +136,7 @@ and the corresponding total amounts of money are
 M_+ = \frac{M_0}{r}, \qquad M_- = \frac{M_0(1-r)}{r}.
 \]
 This choice ensures that the total net wealth remains
-\[
-M_+ - M_- = \frac{M_0}{r} - \frac{M_0(1-r)}{r} = M_0.
-\]
+$M_+ - M_- =  M_0$.
 Hence the system has a positive money sector and a negative debt sector, while preserving the net conserved amount $M_0$.
 
 
@@ -166,6 +164,7 @@ A different model \cite{ispolatov1998wealth} was introduced as a concept of savi
 This model perfectly fits the money conservation, thus it considers that agents will exchange only a fraction of their money, and the rest will be saved.
 To make it simple, each agent exchanges a fraction $\gamma$ of their money, where $\gamma$ is a fixed number between 0 and 1:
 \begin{equation}
+\label{eq:proportional-transfers}    
     \Delta m = \gamma m_i.
 \end{equation}
 
@@ -174,19 +173,80 @@ In this model, the stationary distribution of money is not the Boltzmann-Gibbs d
     \Prob{m} = c m^{\beta} e^{-m/\Temperature},
 \label{eq:gamma-distribution}
 \end{equation}
-where it differs from the exponential~\ref{eq:boltzmann-gibbs} distribution by the factor $m^{\beta}$, where $\beta$ is a parameter that depends on the saving propensity $\gamma$.
-From Boltzmann-Gibbs kinetic theory, \cite{ispolatov1998wealth} derived the relation between $\beta$ and $\gamma$:
+where it differs from the exponential distribution~(Eq.~\ref{eq:boltzmann-gibbs}) by the power law factor $m^{\beta}$, where $\beta$ is a parameter that depends on the saving propensity $\gamma$.
+From Boltzmann-Gibbs kinetic theory that is discussed in \ref{sec:non-equilibrium}, \cite{ispolatov1998wealth} derived the relation between $\beta$ and $\gamma$:
 \begin{equation}
     \beta = - 1 - ln(2)/ln(1-\gamma).
 \end{equation}
-which shows that if payers spend a relatively small fraction of their money, $\gamma < 1/2$, so the low money population is suppressed $P(m = 0) \rightarrow 0$, and the distribution has a peak at a non-zero value of money. 
+which shows that if payers spend a relatively small fraction of their money, $\gamma < 1/2$, then the low money population is suppressed $P(m = 0) \rightarrow 0$.
 
+This transactional model has a difference with respect to the previous ones:
+the transactions are not reversible, indeed when an agent $i$ gives a fixed fraction
+$\gamma$ of his money $m_i$ to an agent with balance $m_j$, their
+balances become $(1-\gamma)m_i$ and $m_j + \gamma m_i$. 
+If we try to reverse this process and appoint the agent $j$ to be the payer
+and to give the fraction $\gamma$ of her money, $\gamma(m_j + \gamma m_i)$,
+to the agent $i$, the system does not return to the original configuration $[m_i, m_j]$.
+This is better discussed in the next section~(\ref{sec:non-equilibrium}), where the non-equilibrium dynamics of the system is analyzed.
 
-\section{Markov Processes}
-In both economics and physics, the limiting behavior for superposed effects of large numbers of individuals
-(particles) is due to probabilistic central limit theorems\cite{silver2002statistical}.
-Economic models leading to non-Gaussian distributions often
-involve complex or heterogeneous interactions among market participants.
+\subsection{Non-equilibrium dynamics}
+\label{sec:non-equilibrium}
 
+We can study the evolution of the system that is not in equilibrium, and we can analyze the time-dependent behavior of the system starting from the Boltzmann kinetic equation \cite{Boltzmann1872}:
 
-\cite{samuelson2016proof}
+\begin{equation}
+\label{eq:boltzmann-kinetic}
+\begin{aligned}
+    & \frac{\partial P(m,t)}{\partial t} = \\ 
+    & \int_0^\infty\!\int_0^\infty \Big[  - f_{m,m'\to m-\Delta,m'+\Delta}\,P(m)\,P(m') + \\
+    & + f_{m-\Delta,m'+\Delta\to m,m'}\,P(m-\Delta)\,P(m'+\Delta) \Big]\;dm'\,d\Delta &.
+\end{aligned}
+\end{equation}
+
+Here $f_{[m,m']\rightarrow[m-\Delta,m'+\Delta]}$ is the probability of transferring money $\Delta$ 
+from an agent with money $m$ to an agent with money $m'$ per unit time. 
+This probability, multiplied by the occupation numbers $P(m)$ and $P(m')$, 
+gives the rate of transitions from the state $[m,m']$ to the state $[m-\Delta,m'+\Delta]$. 
+The first term in Eq.~(\ref{eq:boltzmann-kinetic}) gives the depopulation rate of the state $m$. 
+The second term in Eq.~(\ref{eq:boltzmann-kinetic}) describes the reversed process, 
+where the occupation number $P(m)$ increases. 
+When the two terms are equal, the direct and reversed transitions cancel each other statistically, 
+and the probability distribution is stationary:
+$dP(m)/dt = 0$. This is the principle of detailed balance, or the so called equilibrium.
+
+In physics, the fundamental microscopic equations of motion of
+particles obey time-reversal symmetry. This means that the
+probabilities of the direct and reversed processes are exactly equal:
+
+\begin{equation}
+    f_{[m,m']\rightarrow[m-\Delta,m'+\Delta]}
+    =
+    f_{[m-\Delta,m'+\Delta]\rightarrow[m,m']}.
+\end{equation}
+
+When Eq.~(\ref{eq:boltzmann-kinetic}) is satisfied, the detailed balance condition for
+Eq.~(\ref{eq:boltzmann-kinetic}) reduces to the equation
+$P(m)P(m') = P(m-\Delta)P(m'+\Delta)$,
+because the factors $f$ cancel out. The only solution of this equation
+is the exponential function
+
+\begin{equation}
+    P(m) = c\exp(-m/T_m),
+\end{equation}
+
+so the Boltzmann-Gibbs distribution is the stationary solution of the
+Boltzmann kinetic equation. 
+
+As previously discussed, in the case of proportional transfers~(\ref{eq:proportional-transfers}), the time-reversal symmetry is broken, and the stationary distribution is indeed not a Boltzmann-Gibbs distribution, but a Gamma distribution.
+Indeed the payer pays a deterministic fraction of his money, but
+the receiver receives a random amount from a random
+agent, so their roles are not interchangeable.
+Therefore, the stationary distribution $P(m)$ in multiplicative
+models is typically not exactly exponential.
+
+These examples show that the Boltzmann-Gibbs 
+distribution is not valid for any conservative model.
+We can state that for all conservative
+models that have time-reversal symmetry, the stationary
+distribution is exponential and does not depend on the
+details of the model.
