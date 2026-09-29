@@ -305,13 +305,85 @@ where $\eta_i(t)$ is a Gaussian random variable with mean $\langle \eta \rangle$
 which describes the growth of wealth due to investment in stock market.
 The last two terms describe the exchange of wealth between two agents $i$ and $j$, 
 where the transaction is proportional to the wealth of the payer with the coefficients $J_{ij}$.
-So, the model~(\ref{eq:15}) is multiplicative and invariant under the scale transformation. 
+So, the model~(\ref{eq:wealth-growth}) is multiplicative and invariant under the scale transformation. 
 For simplicity, the exchange fractions are taken to be the same for all agents: 
 $J_{ij} = J/N$ for all $i \neq j$, where $N$ is the total number of agents. 
-In this case, the last two terms in Eq.~(\ref{eq:15}) can be written as $J(\langle w\rangle - w_i)$, where $\langle w\rangle = \sum_i w_i/N$ is the average wealth per agent. 
+In this case, the last two terms in Eq.~(\ref{eq:wealth-growth}) can be written as $J(\langle w\rangle - w_i)$, where $\langle w\rangle = \sum_i w_i/N$ is the average wealth per agent. 
 This case represents a ``mean-field'' model, where all agents feel the same environment. 
-It can be easily shown that the average wealth increases in time as $\langle w\rangle_t = \langle w\rangle_0 e^{(\langle\eta\rangle + \sigma^2)t}$. 
-Then, it makes more sense to consider the relative wealth $\tilde{w}_i = w_i/\langle w\rangle_t$. Eq.~(\ref{eq:15}) 
+%It can be easily shown that the average wealth increases in time as $\langle w\rangle_t = \langle w\rangle_0 e^{(\langle\eta\rangle + \sigma^2)t}$. See the appendix~\ref{sec:appendix-wealth} for the derivation of this result.
+Consequently, defining the average wealth as
+\begin{equation}
+    \langle w\rangle_t
+    =
+    \frac{1}{N}\sum_{i=1}^{N} w_i(t),
+\end{equation}
+the exchange terms cancel when Eq.~(\ref{eq:wealth-growth}) is summed over all agents, giving
+\begin{equation}
+    \frac{d\langle w\rangle_t}{dt}
+    =
+    \frac{1}{N}\sum_{i=1}^{N}\eta_i(t)w_i(t).
+\end{equation}
+
+To understand the resulting evolution of the average wealth, consider
+first the multiplicative stochastic process
+\begin{equation}
+    dw
+    =
+    \langle\eta\rangle w\,dt
+    +
+    \sqrt{2\sigma^2}\,w\circ dW_t,
+\end{equation}
+where $W_t$ is a Wiener process and $\circ$ denotes the Stratonovich
+interpretation. Dividing by $w$ and integrating gives
+\begin{equation}
+    w(t)
+    =
+    w_0
+    \exp\left[
+        \langle\eta\rangle t
+        +
+        \sqrt{2\sigma^2}\,W_t
+    \right].
+\end{equation}
+Since $W_t$ is a Gaussian random variable with
+$\langle W_t\rangle=0$ and variance $\langle W_t^2\rangle=t$, its
+moment-generating function satisfies
+\begin{equation}
+    \left\langle e^{aW_t}\right\rangle
+    =
+    e^{a^2t/2}.
+\end{equation}
+Taking $a=\sqrt{2\sigma^2}$ therefore yields
+\begin{equation}
+    \left\langle
+        e^{\sqrt{2\sigma^2}W_t}
+    \right\rangle
+    =
+    e^{\sigma^2t}.
+\end{equation}
+The average wealth consequently evolves as
+\begin{equation}
+    \boxed{
+    \langle w\rangle_t
+    =
+    \langle w\rangle_0
+    \exp\left[
+        \left(\langle\eta\rangle+\sigma^2\right)t
+    \right]
+    }.
+\end{equation}
+
+The additional term $\sigma^2$ arises from the multiplicative nature of
+the stochastic fluctuations. Although the noise has zero mean, the
+wealth depends exponentially on the stochastic variable, and therefore
+$\langle e^{\xi}\rangle \neq e^{\langle\xi\rangle}$. In particular,
+positive fluctuations increase wealth by a larger multiplicative factor
+than the corresponding negative fluctuations decrease it. This results
+in an increase of the arithmetic mean growth rate by $\sigma^2$.
+
+
+
+Then, it makes more sense to consider the relative wealth $\tilde{w}_i = w_i/\langle w\rangle_t$. Eq.~(\ref{wealth-growth}) 
 for this variable becomes
 
 \begin{equation}
@@ -333,3 +405,6 @@ The stationary solution ($\partial P/\partial t = 0$) of this equation is given 
   P(\tilde{w}) = c\,\frac{e^{-J/\sigma^2\tilde{w}}}{\tilde{w}^{2+J/\sigma^2}}.
   \label{eq:18}
 \end{equation}Therefore the model is multiplicative, and the stationary distribution of wealth is a power law with an exponential cutoff:
+
+
+\newpage
