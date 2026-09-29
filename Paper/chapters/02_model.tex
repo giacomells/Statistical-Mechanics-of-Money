@@ -291,3 +291,45 @@ In general
 \subsubsection{Wealth growth as a stoachastic process}
 \label{sec:wealth-growth}
 
+Although the total wealth W is not conserved because of the price $p$ fluctuations,
+we can consider it as a stochastic process anyway because 
+the total money $M$ and the total number of stocks $S$ are conserved.
+Allegedly the evolution of the wealth $w_i$ of an agent $i$ can be described by a stochastic differential equation:
+
+\begin{equation}
+\label{eq:wealth-growth}
+  \frac{dw_i}{dt} = \eta_i(t)\, w_i + \sum_{j(\neq i)} J_{ij} w_j - \sum_{j(\neq i)} J_{ji} w_i,
+\end{equation}
+
+where $\eta_i(t)$ is a Gaussian random variable with mean $\langle \eta \rangle$ and variance $2\sigma^2$, 
+which describes the growth of wealth due to investment in stock market.
+The last two terms describe the exchange of wealth between two agents $i$ and $j$, 
+where the transaction is proportional to the wealth of the payer with the coefficients $J_{ij}$.
+So, the model~(\ref{eq:15}) is multiplicative and invariant under the scale transformation. 
+For simplicity, the exchange fractions are taken to be the same for all agents: 
+$J_{ij} = J/N$ for all $i \neq j$, where $N$ is the total number of agents. 
+In this case, the last two terms in Eq.~(\ref{eq:15}) can be written as $J(\langle w\rangle - w_i)$, where $\langle w\rangle = \sum_i w_i/N$ is the average wealth per agent. 
+This case represents a ``mean-field'' model, where all agents feel the same environment. 
+It can be easily shown that the average wealth increases in time as $\langle w\rangle_t = \langle w\rangle_0 e^{(\langle\eta\rangle + \sigma^2)t}$. 
+Then, it makes more sense to consider the relative wealth $\tilde{w}_i = w_i/\langle w\rangle_t$. Eq.~(\ref{eq:15}) 
+for this variable becomes
+
+\begin{equation}
+  \frac{d\tilde{w}_i}{dt} = \left(\eta_i(t) - \langle\eta\rangle - \sigma^2\right)\tilde{w}_i + J(1 - \tilde{w}_i).
+  \label{eq:16}
+\end{equation}
+
+The probability distribution $P(\tilde{w},t)$ for the stochastic differential equation~(\ref{eq:16}) is governed by the Fokker-Planck equation
+
+\begin{equation}
+  \frac{\partial P}{\partial t} = \frac{\partial \left[J(\tilde{w}-1) + \sigma^2\tilde{w}\right]P}{\partial \tilde{w}}
+  + \sigma^2 \frac{\partial}{\partial \tilde{w}}\left(\tilde{w}\,\frac{\partial(\tilde{w}P)}{\partial \tilde{w}}\right).
+  \label{eq:17}
+\end{equation}
+
+The stationary solution ($\partial P/\partial t = 0$) of this equation is given by the following formula
+
+\begin{equation}
+  P(\tilde{w}) = c\,\frac{e^{-J/\sigma^2\tilde{w}}}{\tilde{w}^{2+J/\sigma^2}}.
+  \label{eq:18}
+\end{equation}Therefore the model is multiplicative, and the stationary distribution of wealth is a power law with an exponential cutoff:
