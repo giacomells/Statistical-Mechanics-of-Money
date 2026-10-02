@@ -294,7 +294,7 @@ In general
 Although the total wealth W is not conserved because of the price $p$ fluctuations,
 we can consider it as a stochastic process anyway because 
 the total money $M$ and the total number of stocks $S$ are conserved.
-Allegedly the evolution of the wealth $w_i$ of an agent $i$ can be described by a stochastic differential equation:
+Allegedly the evolution of the wealth $w_i$ of an agent $i$ can be described by a stochastic differential equation~\cite{benzi1981mechanism}:
 
 \begin{equation}
 \label{eq:wealth-growth}
@@ -324,8 +324,12 @@ the exchange terms cancel when Eq.~(\ref{eq:wealth-growth}) is summed over all a
     \frac{1}{N}\sum_{i=1}^{N}\eta_i(t)w_i(t).
 \end{equation}
 
-To understand the resulting evolution of the average wealth, consider
-first the multiplicative stochastic process
+The evolution of the average wealth is driven by the aggregate fluctuations
+of the individual agents. If these fluctuations are sufficiently rapid and
+their correlation time is short compared with the timescale of wealth
+evolution, they can be approximated by a multiplicative white noise.
+Under this approximation, and using the Stratonovich convention, the
+average wealth satisfies
 \begin{equation}
     dw
     =
@@ -334,7 +338,27 @@ first the multiplicative stochastic process
     \sqrt{2\sigma^2}\,w\circ dW_t,
 \end{equation}
 where $W_t$ is a Wiener process and $\circ$ denotes the Stratonovich
-interpretation. Dividing by $w$ and integrating gives
+interpretation. 
+
+\subsubsection{Stratonovich and Ito Interpretation}
+
+For the multiplicative stochastic equation
+\begin{equation}
+    dw
+    =
+    \langle\eta\rangle w\,dt
+    +
+    \sqrt{2\sigma^2}\,w\circ dW_t,
+\end{equation}
+the Stratonovich interpretation allows the use of the usual chain rule. Dividing by $w$ and integrating gives
+\begin{equation}
+    \ln\frac{w(t)}{w_0}
+    =
+    \langle\eta\rangle t
+    +
+    \sqrt{2\sigma^2}\,W_t,
+\end{equation}
+and therefore
 \begin{equation}
     w(t)
     =
@@ -345,45 +369,72 @@ interpretation. Dividing by $w$ and integrating gives
         \sqrt{2\sigma^2}\,W_t
     \right].
 \end{equation}
-Since $W_t$ is a Gaussian random variable with
-$\langle W_t\rangle=0$ and variance $\langle W_t^2\rangle=t$, its
-moment-generating function satisfies
+
+Since $W_t$ is a Gaussian random variable with variance $t$,
 \begin{equation}
     \left\langle e^{aW_t}\right\rangle
     =
     e^{a^2t/2}.
 \end{equation}
-Taking $a=\sqrt{2\sigma^2}$ therefore yields
+Taking $a=\sqrt{2\sigma^2}$ yields
 \begin{equation}
-    \left\langle
-        e^{\sqrt{2\sigma^2}W_t}
-    \right\rangle
-    =
-    e^{\sigma^2t}.
-\end{equation}
-The average wealth consequently evolves as
-\begin{equation}
+\label{eq:mean-wealth-growth}
     \boxed{
-    \langle w\rangle_t
+    \langle w(t)\rangle
     =
-    \langle w\rangle_0
-    \exp\left[
-        \left(\langle\eta\rangle+\sigma^2\right)t
-    \right]
+    w_0
+    e^{(\langle\eta\rangle+\sigma^2)t}
     }.
 \end{equation}
+
+The appearance of the additional $\sigma^2$ term can also be understood
+by converting the Stratonovich equation into its equivalent It\^o form.
+For a general Stratonovich stochastic differential equation
+\begin{equation}
+    dx=a(x)\,dt+b(x)\circ dW_t,
+\end{equation}
+the corresponding It\^o equation is
+\begin{equation}
+    dx=
+    \left[
+        a(x)+\frac{1}{2}b(x)b'(x)
+    \right]dt
+    +
+    b(x)dW_t.
+\end{equation}
+In the present case,
+\begin{equation}
+    b(w)=\sqrt{2\sigma^2}\,w,
+\end{equation}
+so that
+\begin{equation}
+    \frac{1}{2}b(w)b'(w)
+    =
+    \sigma^2w.
+\end{equation}
+Consequently, the It\^o equivalent is
+\begin{equation}
+    \boxed{
+    dw
+    =
+    (\langle\eta\rangle+\sigma^2)w\,dt
+    +
+    \sqrt{2\sigma^2}\,w\,dW_t
+    }.
+\end{equation}
+Thus, the stochastic correction $\sigma^2$ is a consequence of the
+multiplicative nature of the white noise and the conversion between the
+Stratonovich and It\^o conventions.
 
 The additional term $\sigma^2$ arises from the multiplicative nature of
 the stochastic fluctuations. Although the noise has zero mean, the
 wealth depends exponentially on the stochastic variable, and therefore
-$\langle e^{\xi}\rangle \neq e^{\langle\xi\rangle}$. In particular,
-positive fluctuations increase wealth by a larger multiplicative factor
-than the corresponding negative fluctuations decrease it. This results
-in an increase of the arithmetic mean growth rate by $\sigma^2$.
+$\langle e^{\xi}\rangle \neq e^{\langle\xi\rangle}$. 
 
 
 
-Then, it makes more sense to consider the relative wealth $\tilde{w}_i = w_i/\langle w\rangle_t$. Eq.~(\ref{wealth-growth}) 
+
+Finally, it makes sense to consider the relative wealth $\tilde{w}_i = w_i/\langle w\rangle_t$. Eq.~(\ref{eq:wealth-growth}) 
 for this variable becomes
 
 \begin{equation}
@@ -402,9 +453,10 @@ The probability distribution $P(\tilde{w},t)$ for the stochastic differential eq
 The stationary solution ($\partial P/\partial t = 0$) of this equation is given by the following formula
 
 \begin{equation}
-  P(\tilde{w}) = c\,\frac{e^{-J/\sigma^2\tilde{w}}}{\tilde{w}^{2+J/\sigma^2}}.
+  P(\tilde{w}) = c\ \tilde{w}^{2+J/\sigma^2} e^{-J/\sigma^2\tilde{w}}.
   \label{eq:18}
-\end{equation}Therefore the model is multiplicative, and the stationary distribution of wealth is a power law with an exponential cutoff:
+\end{equation}
+
+Therefore, because the stochastic fluctuations are proportional to the current wealth, the model is multiplicative. Its stationary wealth distribution combines a power-law tail for large wealth with an exponential suppression of very small wealth.
 
 
-\newpage
