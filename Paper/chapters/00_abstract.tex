@@ -3,14 +3,26 @@
 % ============================================================================
 
 \section*{Abstract}
-In both economics and physics, the limiting behavior for superposed effects of large numbers of individuals
-(particles) is due to probabilistic central limit theorems\cite{silver2002statistical}.
-Economic models leading to non-Gaussian distributions often
-involve complex or heterogeneous interactions among market participants.
-There are several references with
-statistical mechanics flavor in economic modeling, which describe equilibria
-via maximum entropy configurations subject to constraints such as fixed
-total wealth.
+Statistical mechanics describes how macroscopic regularities emerge from the
+interactions of many microscopic degrees of freedom. We apply this framework to
+a closed economy in which $N$ agents exchange a conserved quantity, money, through
+random pairwise transactions, in analogy with energy exchange between particles
+in a gas. Using agent based simulations, we study how the stationary money
+distribution depends on the transaction rules and on the boundary conditions.
+When transactions are random and reversible, the distribution relaxes to the
+Boltzmann--Gibbs exponential law, $P(m)\propto e^{-m/T}$, with an effective
+temperature $T=M/N$ equal to the average money per agent. Allowing agents to
+borrow up to a maximum debt $m_d$ leaves the exponential form unchanged but shifts
+the lower boundary and raises the temperature to $T_d=m_d+M/N$. When debt is
+limited by a required reserve ratio, the distribution becomes double-sided, with
+separately conserved positive and negative money. In contrast, when agents
+transfer a fixed fraction of their money, detailed balance is broken and the
+stationary distribution deviates from the exponential, taking a Gamma like form.
+Finally, a multiplicative stochastic model of wealth, in which prices fluctuate
+and total wealth is not conserved, leads to a power-law tail at high wealth.
+These results show that conservation laws and the (ir)reversibility of the
+transaction rules, rather than the details of individual behaviour, determine the
+shape of wealth distributions and the emergence of inequality.
 
 \noindent \textbf{Keywords:} Statistical mechanics, Boltzmann-Gibbs distribution, Gibbs entropy, Agent-based simulation, Markov processes, Economic dynamics, Complex systems.
 

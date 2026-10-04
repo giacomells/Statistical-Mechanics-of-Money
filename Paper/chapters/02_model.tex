@@ -33,40 +33,28 @@ For this reason, we can assume that the probability of finding an agent with mon
 \end{equation}
 where $c$ is a normalization constant and $\Temperature$ is the effective temperature of the system: $T = \TotalMoney / N$, which is average money per agent.
 
-The \textbf{entropy} of the system is defined as:
-\begin{equation}
-    S = -\sum_{i=1}^{\Agents} \Prob{m_i} \log \Prob{m_i}.
-\end{equation}
-The \textbf{equilibrium} is reached when the entropy is maximized when the system "cools off" to the Boltzmann-Gibbs distribution.
+The \textbf{equilibrium} is reached when the entropy is maximized when the system cools off to the Boltzmann-Gibbs distribution.
 
-\subsubsection{Transaction Mechanisms}
-Many different kinds of transactions can be considered, such as:
-\begin{itemize}
-    \item \textbf{Constant transactions: $\Delta m = 1$} where a fixed amount of money is exchanged between agents. 
-    \item \textbf{Fraction of Pair's Average:} A random fraction of the average money of the pair $\frac{m_i + m_j}{2}$ is exchanged:
-                                                $\Delta m = r \cdot \frac{m_i + m_j}{2}$, 
-    \item \textbf{Fractional transactions} where a fraction $\gamma$ of the agent's money is exchanged, the two agents will exchange
-                                            only a portion of their money. This mechanism show how richer agents can exchange more money than poorer agents, and it is more realistic.
 
-\end{itemize}
-
-Therefore we can reassume the transaction mechanisms as:
-\[
-\Delta m =
-\begin{cases}
-1, & \text{constant exchange},\\[4pt]
-\eta \dfrac{x_i+x_j}{2}, & \text{fraction of pair average},\\[8pt]
-\eta \bar{x}, & \text{fraction of system average},
-\end{cases}
-\qquad 0\le \eta \le 1.
-\]
-
-Obviously, the transaction is accepted only if the payer has sufficient funds in the chosen pool.
+Later on it will be discussed how the richer agents don't really follow Boltzmann-Gibbs distribution, but they follow a power law distribution, as observed in real economies.
+These agents are not in equilibrium with the rest of the system, therefore they are not part of the thermalized system.
 
 
 \subsection{The different models}
 Different assumptions were made in the literature to model the money exchange between agents.
-The aim it's to find a model that can reproduce the empirical wealth distribution observed in real economies.
+The aim is to find a model that can reproduce the empirical wealth distribution observed in real economies.
+
+\subsubsection{Transaction Mechanisms}
+Many different kinds of transactions can be considered, such as:
+\begin{itemize}
+    \item \textbf{Constant transactions: $\Delta m = const$} where a fixed amount of money is exchanged between agents. 
+    \item \textbf{Fractional transactions} where a fraction $\gamma$ of the agent's money is exchanged, the two agents will exchange
+                                            only a portion of their money. This mechanism show how richer agents can exchange more money than poorer agents, and it is more realistic.
+
+\end{itemize}
+Obviously, the transaction is accepted only if the payer has sufficient funds in the chosen pool.
+
+
 \subsubsection{Model without debt}
 The simplest model has constant transactions and no debt can be accumulated. This model leads to the Boltzmann-Gibbs distribution as previously discussed.
 
@@ -102,7 +90,7 @@ rather modifies boundary conditions for $P(m)$.
 % WE MIGHT CONSIDER A MODEL WHERE THERE'S AN INTEREST RATE ON DEBT, SO THAT THE DEBT IS NOT FREE.
 
 One way of limiting the total debt in the economy is the so-called
-required reserve ratio $r$ \cite{mcconnell1986contemporary}. Every bank is required by law
+required reserve ratio $r$. Every bank is required by law
 to set aside a fraction $r$ of the money deposited into the bank, and
 this reserved money cannot be loaned further. 
 If the initial amount of
@@ -145,7 +133,7 @@ The two pools evolve independently, and at the end the debt pool is reflected to
 (x_1,\dots,x_{N_+},-y_1,\dots,-y_{N_-}).
 \]
 
-This construction produces a bimodal distribution with a positive branch and a negative branch, separated by a zero-crossing at $m=0$. The parameter $r$ controls the relative weight of the two sectors. To determine the value of the reverse ratio that aligns the two branches at the origin, we impose the matching condition
+This construction produces a bimodal distribution with a positive branch and a negative branch, separated by a zero-crossing at $m=0$. The parameter $r$ controls the relative weight of the two sectors. To determine the value of the reserve ratio that aligns the two branches at the origin, we impose the matching condition
 \[
 p_+(0)=p_-(0),
 \]
@@ -252,8 +240,8 @@ One can argue that wealth $w_i$ is equal to money $m_i$ plus
 the other property that an agent i has. 
 Money (paper cash, bank accounts) is generally liquid and countable. 
 However, the other property
-is not immediately liquid and has to be sold first (con-
-verted into money) to be used for other purchases. In
+is not immediately liquid and has to be sold first 
+(converted into money) to be used for other purchases. In
 order to estimate the monetary value of property, one
 needs to know the price p. In the simplest model, let us
 consider just one type of property, say, stocks s. Then
@@ -275,7 +263,7 @@ a new price $p$.
 Moreover, the wealth $w_i$ of an agent i does
 not change after a transaction with an agent j. Indeed,
 in exchange for paying money $\Delta m$, agent i receives the
-stock $\Delta s = \Delta m/p$, so her total wealth (remains the
+stock $\Delta s = \Delta m/p$, so her total wealth remains the
 same. In principle, the agent can instantaneously sell the
 stock back at the same price and recover the money paid.
 
@@ -324,23 +312,19 @@ the exchange terms cancel when Eq.~(\ref{eq:wealth-growth}) is summed over all a
     \frac{1}{N}\sum_{i=1}^{N}\eta_i(t)w_i(t).
 \end{equation}
 
-The evolution of the average wealth is driven by the aggregate fluctuations
-of the individual agents. If these fluctuations are sufficiently rapid and
-their correlation time is short compared with the timescale of wealth
-evolution, they can be approximated by a multiplicative white noise~(\cite{bo2013whitenoise, risken1989fokker}).
-Under this approximation, and using the Stratonovich convention, the
-average wealth satisfies
+The exchange terms do not change the growth of the average, so it suffices to
+study the multiplicative part of Eq.~(\ref{eq:wealth-growth}) for a single agent.
+If the fluctuations $\eta_i(t)$ are sufficiently rapid and their correlation time
+is short compared with the timescale of wealth evolution, they can be approximated
+by a multiplicative white noise~(\cite{bo2013whitenoise, risken1989fokker}).
+Using the Stratonovich convention, the wealth of an agent then satisfies
 \begin{equation}
-    dw
-    =
-    \langle\eta\rangle w\,dt
-    +
-    \sqrt{2\sigma^2}\,w\circ dW_t,
+    dw = \langle\eta\rangle w\,dt + \sqrt{2\sigma^2}\,w\circ dW_t,
 \end{equation}
 where $W_t$ is a Wiener process and $\circ$ denotes the Stratonovich
-interpretation~(\cite{stratonovich1967topics}). 
+interpretation~(\cite{stratonovich1967topics}).
 
-\subsubsection{Stratonovich and Ito Interpretation}
+\subsubsection{Stratonovich and It\^o Interpretation}
 
 For the multiplicative stochastic equation
 \begin{equation}
@@ -372,9 +356,7 @@ and therefore
 
 Since $W_t$ is a Gaussian random variable with variance $t$,
 \begin{equation}
-    \left\langle e^{aW_t}\right\rangle
-    =
-    e^{a^2t/2}.
+    \left\langle e^{aW_t}\right\rangle = e^{a^2t/2}.
 \end{equation}
 Taking $a=\sqrt{2\sigma^2}$ yields
 \begin{equation}
@@ -453,7 +435,7 @@ The probability distribution $P(\tilde{w},t)$ for the stochastic differential eq
 The stationary solution ($\partial P/\partial t = 0$) of this equation is given by the following formula
 
 \begin{equation}
-  P(\tilde{w}) = c\ \tilde{w}^{2+J/\sigma^2} e^{-J/\sigma^2\tilde{w}}.
+  P(\tilde{w}) = c\ \tilde{w}^{-(2+J/\sigma^2)} e^{-J/\sigma^2\tilde{w}}.
   \label{eq:18}
 \end{equation}
 

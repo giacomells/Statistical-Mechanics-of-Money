@@ -3,27 +3,21 @@
 % ============================================================================
 
 \section{Results}
-
+Different scenarios were studied and in the end a comparison between different models entropy was done with the same initial conditions.
 \subsection{Basic Money Distribution}
 
 In this scenario, we consider a simple model of money distribution among agents without debt. 
 The total money of the system is conserved, and no agent can have a negative balance.
 The agents engage with each other randomly but always with a fixed amount of money in each transaction.
-
-Said so, we can assume that the money distribution will converge to the Boltzmann-Gibbs distribution as predicted by the theoretical framework.
 It is possible to see the results in Figure \ref{fig:NoDebtImage}, where the histogram of the money distribution is plotted along with the theoretical Boltzmann-Gibbs distribution.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.4\textwidth]{NoDebtImage.png}
     \caption{The histogram shows the money distribution of agents after a $10^6$ number of transactions, while the red line represents the theoretical Boltzmann-Gibbs distribution.
-                The simulation was performed with $N=3500$, $M = 10 000$, and $\Delta m = 1$. Agents in this scenario can't have debt.}
+                The simulation was performed with $N=3500$, $M = 100 000$, and $\Delta m = 1$. Agents in this scenario can't have debt.}
     \label{fig:NoDebtImage}
 \end{figure}
-
-Later on it will be discussed how the richer agents don't really follow Boltzmann-Gibbs distribution, but they follow a power law distribution, as observed in real economies.
-These agents are not in equilibrium with the rest of the system, therefore they are not part of the thermalized system.
-
 
 
 
@@ -34,7 +28,7 @@ As it is shown in Fig.~\ref{fig:DebtImage}, after many interactions, the populat
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.4\textwidth]{DebtImage.png}
-    \caption{The histogram shows the money distribution of agents after a $10^6$ number of transactions, while the red line represents the theoretical Boltzmann-Gibbs distribution.
+    \caption{The histogram shows the money distribution of agents after a $10^7$ number of transactions, while the red line represents the theoretical Boltzmann-Gibbs distribution.
                 The simulation was performed with $N=3500$, $M = 10 000$, and $\Delta m = 1$. Agents in this scenario can have negative balances and the maximal debt is $md = 50$.}
     \label{fig:DebtImage}
 \end{figure}
@@ -48,11 +42,11 @@ The results are shown in Fig.~\ref{fig:ReverseRatioImage}, where the histogram o
     \centering
     \includegraphics[width=0.4\textwidth]{ReverseRatioImage.png}
     \caption{The histogram shows the money distribution of agents after $10^7$ number of transactions, while the red and blue lines represent the theoretical double-sided Boltzmann-Gibbs distribution.
-                The simulation was performed with $N=500$, $M = 5000$, and $\Delta m = 1$. The reverse ratio is set to $r = 0.618$ so that the two branches of the distribution meet at the origin.}
+                The simulation was performed with $N=500$, $M_0 = 5000$, and $\Delta m = 1$. The reserve ratio is set to $r = 0.618$ so that the two branches of the distribution meet at the origin.}
     \label{fig:ReverseRatioImage}
 \end{figure}
 
-\subsection{Money Distribution with Saving Propensity}
+\subsection{Money Distribution with Proportional money transfers}
 Let's now consider a scenario where agents have a saving propensity $\gamma$.
 Each agent can exchange only a fraction of their money, which is determined by the saving propensity.
 The results of the simulation are shown in Fig.~\ref{fig:SavingPropensityImage}, where the histogram of the money distribution is plotted along with the theoretical Gamma distribution.
@@ -60,8 +54,19 @@ The results of the simulation are shown in Fig.~\ref{fig:SavingPropensityImage},
     \centering
     \includegraphics[width=0.4\textwidth]{SavingPropensity.png}
     \caption{The histogram shows the money distribution of agents after $10^6$ number of transactions, while the green line represents the theoretical Gamma distribution and the red line represents the Boltzmann-Gibbs distribution with such temperature.
-                The simulation was performed with $N=3500$, $M = 10 000$, and $\gamma = 1/3$. Agents in this scenario can exchange only a fraction of their money, determined by the saving propensity $\gamma$.}
+                The simulation was performed with $N=3500$, $M = 1 000 000$, and $\gamma = 1/3$. Agents in this scenario can exchange only a fraction of their money, determined by the saving propensity $\gamma$.}
     \label{fig:SavingPropensityImage}
 \end{figure}
 
-
+\subsection{Entropy Comparison}
+In this section, we compare the entropy of the different models studied in the previous sections.
+The entropy is computed using the formula $S = -\sum_i P_i \ln P_i$, where $P_i$ is the probability of finding an agent with money $m_i$.
+In Fig.~\ref{fig:EntropyComparison}, it is possible to notice that the model that reaches maximum entropy first is the proprtional money transfer model, followed by the basic money distribution model and finally the money distribution with debt model.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{EntropyComparison.png}
+    \caption{The plot shows the entropy of the different models studied in the previous sections.
+                The simulation was performed with $N=50$, $M = 10 000$, and $\Delta m = 1$. The proportional rate is set to $\gamma = 1/3$. 
+    }
+    \label{fig:EntropyComparison}
+\end{figure}    
