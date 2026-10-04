@@ -285,8 +285,7 @@ introducing a demand-supply mechanism, where the price is determined by the bala
 demonstrated via computer simulations and proved analytically
 using the theory of Markov processes that the stationary
 distribution $P(w)$ of wealth $w$ is given by
-the Gamma distribution. 
-In general
+a Gamma like distribution. 
 
 \subsubsection{Wealth growth as a stoachastic process}
 \label{sec:wealth-growth}
@@ -294,7 +293,7 @@ In general
 Although the total wealth W is not conserved because of the price $p$ fluctuations,
 we can consider it as a stochastic process anyway because 
 the total money $M$ and the total number of stocks $S$ are conserved.
-Allegedly the evolution of the wealth $w_i$ of an agent $i$ can be described by a stochastic differential equation~\cite{benzi1981mechanism}:
+Allegedly the evolution of the wealth $w_i$ of an agent $i$ can be described by a stochastic differential equation~\cite{ito1941stochastic}:
 
 \begin{equation}
 \label{eq:wealth-growth}
@@ -302,7 +301,8 @@ Allegedly the evolution of the wealth $w_i$ of an agent $i$ can be described by 
 \end{equation}
 
 where $\eta_i(t)$ is a Gaussian random variable with mean $\langle \eta \rangle$ and variance $2\sigma^2$, 
-which describes the growth of wealth due to investment in stock market.
+which describes the growth of wealth due to investment in stock market. Therefore we can 
+consider it as a Stochastic Generalized Lotka-Volterra model~\cite{huang2002stochastic}.
 The last two terms describe the exchange of wealth between two agents $i$ and $j$, 
 where the transaction is proportional to the wealth of the payer with the coefficients $J_{ij}$.
 So, the model~(\ref{eq:wealth-growth}) is multiplicative and invariant under the scale transformation. 
@@ -327,7 +327,7 @@ the exchange terms cancel when Eq.~(\ref{eq:wealth-growth}) is summed over all a
 The evolution of the average wealth is driven by the aggregate fluctuations
 of the individual agents. If these fluctuations are sufficiently rapid and
 their correlation time is short compared with the timescale of wealth
-evolution, they can be approximated by a multiplicative white noise.
+evolution, they can be approximated by a multiplicative white noise~(\cite{bo2013whitenoise, risken1989fokker}).
 Under this approximation, and using the Stratonovich convention, the
 average wealth satisfies
 \begin{equation}
@@ -338,7 +338,7 @@ average wealth satisfies
     \sqrt{2\sigma^2}\,w\circ dW_t,
 \end{equation}
 where $W_t$ is a Wiener process and $\circ$ denotes the Stratonovich
-interpretation. 
+interpretation~(\cite{stratonovich1967topics}). 
 
 \subsubsection{Stratonovich and Ito Interpretation}
 
@@ -388,7 +388,7 @@ Taking $a=\sqrt{2\sigma^2}$ yields
 \end{equation}
 
 The appearance of the additional $\sigma^2$ term can also be understood
-by converting the Stratonovich equation into its equivalent It\^o form.
+by converting the Stratonovich equation into its equivalent It\^o form~(\cite{ito1944109}).
 For a general Stratonovich stochastic differential equation
 \begin{equation}
     dx=a(x)\,dt+b(x)\circ dW_t,

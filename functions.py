@@ -378,3 +378,29 @@ def simulate_proportional_money_transfer(
         agents[receiver] += delta
 
     return agents
+
+
+def simulate_entropy_proportional(N=500, M=5e5, steps=2000, gamma=0.1, bins=500, max_money=5000):
+    """
+    Simulate the evolution of entropy for proportional money transfers.
+
+    Returns the time steps array and the entropy value at each step.
+    """
+    N = int(N)
+    steps = int(steps)
+    agents = np.full(N, M / N, dtype=float)
+
+    hist, _ = np.histogram(agents, bins=bins, range=(0, max_money), density=True)
+    S_values = [-np.sum(hist[hist > 0] * np.log(hist[hist > 0]))]
+
+    for _ in range(steps):
+        payer, receiver = np.random.choice(N, size=2, replace=False)
+        delta = gamma * agents[payer]
+        agents[payer] -= delta
+        agents[receiver] += delta
+
+        hist, _ = np.histogram(agents, bins=bins, range=(0, max_money), density=True)
+        S_values.append(-np.sum(hist[hist > 0] * np.log(hist[hist > 0])))
+
+    time = np.arange(0, steps + 1)
+    return time, S_values
