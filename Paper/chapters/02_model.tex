@@ -6,7 +6,7 @@
 As previously discussed, we can assume that agents can be modeled as particles in a closed system, where money is conserved.
 Instead of exchanging energy, agents exchange money through random transactions. 
 The system evolves through random transactions, forming a Markov process. 
-The theoretical framework predicts that the wealth distribution converges to the Boltzmann-Gibbs distribution, with entropy increasing over time until equilibrium is reached.
+The theoretical framework predicts that the wealth distribution converges to the Boltzmann-Gibbs distribution, with entropy increasing over time until a stationary distribution is reached.
 
 \subsection{Conservation of Money}
 One could assume that Boltzmann's derivation of the energy distribution can be applied to other statistical systems with a conserved quantity, such as money.
@@ -31,13 +31,12 @@ For this reason, we can assume that the probability of finding an agent with mon
     \Prob{m} = c e^{-m/\Temperature},
 \label{eq:boltzmann-gibbs}
 \end{equation}
-where $c$ is a normalization constant and $\Temperature$ is the effective temperature of the system: $T = \TotalMoney / N$, which is average money per agent.
+where $c$ is a normalization constant derived from the assumption that the density of states is constant, and $\Temperature$ is the effective temperature of the system: $T = \TotalMoney / N$, which is average money per agent.
 
 The \textbf{equilibrium} is reached when the entropy is maximized when the system cools off to the Boltzmann-Gibbs distribution.
 
 
 Later on it will be discussed how the richer agents don't really follow Boltzmann-Gibbs distribution, but they follow a power law distribution, as observed in real economies.
-These agents are not in equilibrium with the rest of the system, therefore they are not part of the thermalized system.
 
 
 \subsection{The different models}
@@ -89,62 +88,6 @@ available money per agent, increases. Therefore, we see that debt does not viola
 rather modifies boundary conditions for $P(m)$.
 % WE MIGHT CONSIDER A MODEL WHERE THERE'S AN INTEREST RATE ON DEBT, SO THAT THE DEBT IS NOT FREE.
 
-One way of limiting the total debt in the economy is the so-called
-required reserve ratio $r$. Every bank is required by law
-to set aside a fraction $r$ of the money deposited into the bank, and
-this reserved money cannot be loaned further. 
-If the initial amount of
-money in the system (the monetary base) is $M_0$, then with loans and
-borrowing the total amount of positive money available to agents is 
-\begin{equation}
-    M = \frac{M_0}{r},
-\end{equation}
-where the factor $1/r$ is called the money multiplier. 
-This is how banks "create money" in the modern economy. 
-They do so by creating debt obligations in the system, where the maximal debt(limited by the factor $1/r$) can be:
-\begin{equation}
-    M_d = M - M_0 = \frac{M_0}{r} - M_0  = M_0 \frac{1-r}{r}.
-\end{equation}  
-
-
-
-
-When the debt is maximized, the money distribution is again exponential but now "double sided".
-Both total amounts of positive $\frac{M_0}{r}$ and negative $\frac{M_0(1-r)}{r}$ money are conserved separately
-since money circulate between the agents in the
-system, so there are eﬀectively two conservation laws for
-each of them.
-
-Let $r\in(0,1)$ denote the fraction of agents in the positive sector and $1-r$ the fraction in the debt sector. The populations are initialized as
-\[
-N_+ = rN, \qquad N_- = (1-r)N,
-\]
-and the corresponding total amounts of money are
-\[
-M_+ = \frac{M_0}{r}, \qquad M_- = \frac{M_0(1-r)}{r}.
-\]
-This choice ensures that the total net wealth remains
-$M_+ - M_- =  M_0$.
-Hence the system has a positive money sector and a negative debt sector, while preserving the net conserved amount $M_0$.
-
-
-The two pools evolve independently, and at the end the debt pool is reflected to negative values:
-\[
-(x_1,\dots,x_{N_+},-y_1,\dots,-y_{N_-}).
-\]
-
-This construction produces a bimodal distribution with a positive branch and a negative branch, separated by a zero-crossing at $m=0$. The parameter $r$ controls the relative weight of the two sectors. To determine the value of the reserve ratio that aligns the two branches at the origin, we impose the matching condition
-\[
-p_+(0)=p_-(0),
-\]
-where the two densities are
-\[
-P(m_+) = \frac{N_+}{N}\frac{1}{T_+} e^{-m_+/T_+}, \qquad m_+\ge 0,
-\]
-\[
-P(m_-) = \frac{N_-}{N}\frac{1}{T_-} e^{m_-/T_-}, \qquad m_-\le 0.
-\]
-
 
 
 \subsubsection{Proportional transfers} %Saving propensity could be added to the model, where agents save a fraction of their money before exchanging it.
@@ -156,12 +99,12 @@ To make it simple, each agent exchanges a fraction $\gamma$ of their money, wher
     \Delta m = \gamma m_i.
 \end{equation}
 
-In this model, the stationary distribution of money is not the Boltzmann-Gibbs distribution, but a Gamma distribution:
+In this model, the stationary distribution of money is not the Boltzmann-Gibbs distribution, but a Gamma like distribution:
 \begin{equation}
     \Prob{m} = c m^{\beta} e^{-m/\Temperature},
 \label{eq:gamma-distribution}
 \end{equation}
-where it differs from the exponential distribution~(Eq.~\ref{eq:boltzmann-gibbs}) by the power law factor $m^{\beta}$, where $\beta$ is a parameter that depends on the saving propensity $\gamma$.
+where it differs from the exponential distribution~(Eq.~\ref{eq:boltzmann-gibbs}) by the power law factor $m^{\beta}$, where $\beta$ is a parameter that depends on $\gamma$.
 From Boltzmann-Gibbs kinetic theory that is discussed in \ref{sec:non-equilibrium}, \cite{ispolatov1998wealth} derived the relation between $\beta$ and $\gamma$:
 \begin{equation}
     \beta = - 1 - ln(2)/ln(1-\gamma).
@@ -191,16 +134,16 @@ We can study the evolution of the system that is not in equilibrium, and we can 
 \end{aligned}
 \end{equation}
 
-Here $f_{[m,m']\rightarrow[m-\Delta,m'+\Delta]}$ is the probability of transferring money $\Delta$ 
+Here $f_{[m,m']\rightarrow[m-\Delta,m'+\Delta]}$ is the transition rate density for a transaction of money $\Delta$ 
 from an agent with money $m$ to an agent with money $m'$ per unit time. 
-This probability, multiplied by the occupation numbers $P(m)$ and $P(m')$, 
+This probability, multiplied by the densities $P(m)$ and $P(m')$, 
 gives the rate of transitions from the state $[m,m']$ to the state $[m-\Delta,m'+\Delta]$. 
 The first term in Eq.~(\ref{eq:boltzmann-kinetic}) gives the depopulation rate of the state $m$. 
 The second term in Eq.~(\ref{eq:boltzmann-kinetic}) describes the reversed process, 
 where the occupation number $P(m)$ increases. 
 When the two terms are equal, the direct and reversed transitions cancel each other statistically, 
 and the probability distribution is stationary:
-$dP(m)/dt = 0$. This is the principle of detailed balance, or the so called equilibrium.
+$dP(m)/dt = 0$. This is the principle of detailed balance.
 
 In physics, the fundamental microscopic equations of motion of
 particles obey time-reversal symmetry. This means that the
@@ -229,10 +172,8 @@ models is typically not exactly exponential.
 
 These examples show that the Boltzmann-Gibbs 
 distribution is not valid for any conservative model.
-We can state that for all conservative
-models that have time-reversal symmetry, the stationary
-distribution is exponential and does not depend on the
-details of the model.
+For the class of random, money conserving exchange models considered here, when the transition rates satisfy detailed balance, 
+the stationary distribution is exponential.
 
 \subsection{Statistical Mechanics of Wealth}
 \label{sec:wealth}
@@ -253,8 +194,8 @@ where $s_i$ is the number of stocks owned by the agent i.
 It is assumed that the price p is the same for all agents.
 
 It is reasonable to start with a model where both the
-total money $M= \sum_i m_i$ and the total stock $S= \sum_i s_i$
-are conserved.
+total money $M= \sum_i m_i = const$ and the total stock $S= \sum_i s_i = const$
+are conserved while the total wealth $W= \sum_i w_i = M + p(t)  S$ is not necessarily conserved.
 Although M and S are conserved, the total wealth $W= \sum_i w_i$
 is generally not conserved, because of price fluctuation.
 Here the wealth $w_i$ of an agent i, not participating in any transactions, may
@@ -281,17 +222,38 @@ a Gamma like distribution.
 Although the total wealth W is not conserved because of the price $p$ fluctuations,
 we can consider it as a stochastic process anyway because 
 the total money $M$ and the total number of stocks $S$ are conserved.
-Allegedly the evolution of the wealth $w_i$ of an agent $i$ can be described by a stochastic differential equation~\cite{ito1941stochastic}:
+Allegedly the evolution of the wealth $w_i$ of an agent $i$ can be described by a stochastic differential equation~\cite{huang2002stochastic}:
 
 \begin{equation}
 \label{eq:wealth-growth}
   \frac{dw_i}{dt} = \eta_i(t)\, w_i + \sum_{j(\neq i)} J_{ij} w_j - \sum_{j(\neq i)} J_{ji} w_i,
 \end{equation}
 
-where $\eta_i(t)$ is a Gaussian random variable with mean $\langle \eta \rangle$ and variance $2\sigma^2$, 
-which describes the growth of wealth due to investment in stock market. Therefore we can 
-consider it as a Stochastic Generalized Lotka-Volterra model~\cite{huang2002stochastic}.
-The last two terms describe the exchange of wealth between two agents $i$ and $j$, 
+where $\eta_i(t)$ is a Gaussian white noise with mean $\langle \eta \rangle$ and variance $2\sigma^2$, 
+which describes the growth of wealth due to investment in stock market. 
+We write
+\begin{equation}
+\eta_i(t)=\langle\eta\rangle+\sqrt{2\sigma^2}\,\xi_i(t),
+\end{equation}
+where
+\begin{equation}
+\langle\xi_i(t)\rangle=0,
+\qquad
+\langle\xi_i(t)\xi_j(t')\rangle
+=\delta_{ij}\delta(t-t').
+\end{equation}
+Equivalently,
+\begin{equation}
+\left\langle
+[\eta_i(t)-\langle\eta\rangle]
+[\eta_j(t')-\langle\eta\rangle]
+\right\rangle
+=2\sigma^2\delta_{ij}\delta(t-t').
+\end{equation}
+
+We can 
+consider Eq.~(\ref{eq:wealth-growth}) as a Stochastic Generalized Lotka-Volterra model.
+The last two terms of the Eq.~(\ref{eq:wealth-growth}) describe the exchange of wealth between two agents $i$ and $j$, 
 where the transaction is proportional to the wealth of the payer with the coefficients $J_{ij}$.
 So, the model~(\ref{eq:wealth-growth}) is multiplicative and invariant under the scale transformation. 
 For simplicity, the exchange fractions are taken to be the same for all agents: 
@@ -309,20 +271,26 @@ the exchange terms cancel when Eq.~(\ref{eq:wealth-growth}) is summed over all a
 \begin{equation}
     \frac{d\langle w\rangle_t}{dt}
     =
-    \frac{1}{N}\sum_{i=1}^{N}\eta_i(t)w_i(t).
+    \frac{1}{N}\sum_{i=1}^{N}\eta_i(t)w_i(t),
 \end{equation}
+which is the instantaneous evolution of the population average.
 
 The exchange terms do not change the growth of the average, so it suffices to
 study the multiplicative part of Eq.~(\ref{eq:wealth-growth}) for a single agent.
 If the fluctuations $\eta_i(t)$ are sufficiently rapid and their correlation time
 is short compared with the timescale of wealth evolution, they can be approximated
 by a multiplicative white noise~(\cite{bo2013whitenoise, risken1989fokker}).
+
+
+
 Using the Stratonovich convention, the wealth of an agent then satisfies
 \begin{equation}
     dw = \langle\eta\rangle w\,dt + \sqrt{2\sigma^2}\,w\circ dW_t,
 \end{equation}
 where $W_t$ is a Wiener process and $\circ$ denotes the Stratonovich
 interpretation~(\cite{stratonovich1967topics}).
+
+
 
 \subsubsection{Stratonovich and It\^o Interpretations}
 
@@ -370,7 +338,7 @@ Taking $a=\sqrt{2\sigma^2}$ yields
 \end{equation}
 
 The appearance of the additional $\sigma^2$ term can also be understood
-by converting the Stratonovich equation into its equivalent It\^o form~(\cite{ito1944109}).
+by converting the Stratonovich equation into its equivalent It\^o form~(\cite{ito1944109, ito1941stochastic}).
 For a general Stratonovich stochastic differential equation
 \begin{equation}
     dx=a(x)\,dt+b(x)\circ dW_t,
@@ -435,10 +403,11 @@ The probability distribution $P(\tilde{w},t)$ for the stochastic differential eq
 The stationary solution ($\partial P/\partial t = 0$) of this equation is given by the following formula
 
 \begin{equation}
-  P(\tilde{w}) = c\ \tilde{w}^{-(2+J/\sigma^2)} e^{-J/\sigma^2\tilde{w}}.
+  P(\tilde{w}) = c\ \tilde{w}^{-(2+J/\sigma^2)} e^{-J/\sigma^2\tilde{w}},
   \label{eq:18}
 \end{equation}
-
-Therefore, because the stochastic fluctuations are proportional to the current wealth, the model is multiplicative. Its stationary wealth distribution combines a power-law tail for large wealth with an exponential suppression of very small wealth.
+therefore, because the stochastic fluctuations are proportional to the current wealth, the model is multiplicative. 
+This is a inverse Gamma distribution, which is a power law distribution with an exponential cutoff.
+In particular, it combines a power-law tail for large wealth with an exponential suppression of very small wealth.
 
 

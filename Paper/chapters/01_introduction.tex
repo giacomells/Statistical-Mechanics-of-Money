@@ -4,15 +4,17 @@
 
 \section{Introduction}
 The applicability of \textbf{statistical mechanics} to economic systems, specifically how money distribution in a society of interacting economic agents follows the \textbf{Boltzmann-Gibbs distribution}. \cite{ChakrabortiStatmech2000, dragulescu2000statistical}
-This is a foundational principle from thermodynamics and statistical physics. 
+This is a principle from thermodynamics and statistical physics. 
 The assumption is that money, like energy in a physical system, is conserved during transactions between agents.
 
-It's possible to demonstrate that \textbf{Gibbs entropy} correctly predicts equilibrium states and that the system evolves as a \textbf{Markov process} toward maximum entropy. 
-These results validate the hypothesis that economic inequality and wealth concentration emerge as natural equilibrium
-states when agents interact via random transactions, analogously to how physical systems spontaneously approach thermodynamic equilibrium.
+The equilibrium distribution can be characterized by maximizing \textbf{Gibbs entropy} subject to the relevant constraints. 
+Although random transactions define a \textbf{Markov process}, this alone does not imply convergence to equilibrium or a monotonic increase in Shannon/Gibbs entropy. 
+For a time homogeneous Markov process with an invariant equilibrium distribution, the relative entropy of the evolving distribution with respect to that equilibrium is non-increasing; 
+detailed balance is a common additional condition that ensures reversibility. 
+In the models studied here, the equilibrium distribution provides a framework for analyzing how inequality and wealth concentration can emerge from random transactions, analogously to equilibrium behavior in physical systems.
 
 This research connects fundamental concepts from statistical mechanics from Markov processes, Boltzmann-Gibbs distributions, Gibbs entropy, and dynamical systems theory
-to economics and the so called "econophysics" or "social physics", providing a computational validation of theoretical predictions.
+to economics and the so-called "econophysics" or "social physics", providing a computational validation of theoretical predictions.
 
 \vspace{1em}
 
@@ -28,8 +30,8 @@ such as Newton's laws or quantum mechanics, to humans,
 but rather uses mathematical methods developed in statistical
 physics to study properties of complex
 economic systems consisting of a large number of humans. 
-So, it may be considered as a branch of applied
-theory of probabilities.
+So, it may be considered as an application
+of probability theory.
 Econophysics distances itself from the verbose, narrative, and ideological style of
 political economy and is closer to econometrics in its
 focus. Studying mathematical models of a large number
@@ -40,17 +42,18 @@ simulation \cite{Yakovenko2009}.
 
 \subsection{Boltzmann-Gibbs Distribution of energy}
 
-The fundamental law of equilibrium statistical mechanics is the
+The fundamental law of equilibrium statistical of mechanics is the
 Boltzmann--Gibbs distribution. It states that the probability
 $P(\varepsilon)$ of finding a physical system or subsystem in a state
 with the energy $\varepsilon$ is given by the exponential function
+where $g(\varepsilon)$ is the density of states.
 
 \begin{equation}
-    P(\varepsilon) = c e^{-\varepsilon/T},
+    P(\varepsilon) \propto g(\varepsilon) e^{-\varepsilon/T},
     \label{eq:boltzmann_distribution}
 \end{equation}
 
-where $T$ is the temperature, and $c$ is a normalizing constant.
+where $T$ is the temperature of the system.
 Here we set the Boltzmann constant $k_B$ to unity
 by choosing the energy units for measuring the physical temperature
 $T$. Then, the expectation value of any physical variable $x$ can be
@@ -65,8 +68,7 @@ obtained as
 
 where the sum is taken over all states of the system. 
 Temperature is equal to the average energy per particle:
-$T \sim \langle \varepsilon \rangle$, up to a numerical coefficient
-of the order of $1$.
+$T \sim \langle \varepsilon \rangle$.
 
 Equation~\eqref{eq:boltzmann_distribution} can be derived in different
 way. One of the shortest derivations can be summarized as

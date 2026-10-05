@@ -1,0 +1,109 @@
+
+
+One way of limiting the total debt in the economy is the so-called
+required reserve ratio $r$. Every bank is required by law
+to set aside a fraction $r$ of the money deposited into the bank, and
+this reserved money cannot be loaned further. 
+If the initial amount of
+money in the system (the monetary base) is $M_0$, then with loans and
+borrowing the total amount of positive money available to agents is 
+\begin{equation}
+    M = \frac{M_0}{r},
+\end{equation}
+where the factor $1/r$ is called the money multiplier. 
+This is how banks "create money" in the modern economy. 
+They do so by creating debt obligations in the system, where the maximal debt(limited by the factor $1/r$) can be:
+\begin{equation}
+    M_d = M - M_0 = \frac{M_0}{r} - M_0  = M_0 \frac{1-r}{r}.
+\end{equation}  
+
+
+
+
+When the debt is maximized, the money distribution is again exponential but now "double sided".
+Both total amounts of positive $\frac{M_0}{r}$ and negative $\frac{M_0(1-r)}{r}$ money are conserved separately
+since money circulate between the agents in the
+system, so there are eﬀectively two conservation laws for
+each of them.
+
+Let $r\in(0,1)$ denote the fraction of agents in the positive sector and $1-r$ the fraction in the debt sector. The populations are initialized as
+\[
+N_+ = rN, \qquad N_- = (1-r)N,
+\]
+and the corresponding total amounts of money are
+\[
+M_+ = \frac{M_0}{r}, \qquad M_- = \frac{M_0(1-r)}{r}.
+\]
+This choice ensures that the total net wealth remains
+$M_+ - M_- =  M_0$.
+Hence the system has a positive money sector and a negative debt sector, while preserving the net conserved amount $M_0$.
+
+
+The two pools evolve independently, and at the end the debt pool is reflected to negative values:
+\[
+(x_1,\dots,x_{N_+},-y_1,\dots,-y_{N_-}).
+\]
+
+This construction produces a bimodal distribution with a positive branch and a negative branch, separated by a zero-crossing at $m=0$. The parameter $r$ controls the relative weight of the two sectors. To determine the value of the reserve ratio that aligns the two branches at the origin, we impose the matching condition
+\[
+p_+(0)=p_-(0),
+\]
+where the two densities are
+\[
+P(m_+) = \frac{N_+}{N}\frac{1}{T_+} e^{-m_+/T_+}, \qquad m_+\ge 0,
+\]
+\[
+P(m_-) = \frac{N_-}{N}\frac{1}{T_-} e^{m_-/T_-}, \qquad m_-\le 0.
+\]
+
+\subsection{Reserve Ratio choice of value $r$}
+From section \ref{sec:debtModel}, we can see that the choice of $r$ is crucial for the model to work properly.
+The choice of $r$ is based on the assumption that the total debt in the system is limited by the required reserve ratio.
+To have matching populations at $m=0$, the condition $P(m_+)=P(m_-)$ reduces to
+\[
+\frac{N_+}{T_+} = \frac{N_-}{T_-},
+\]
+with
+\[
+T_+ = \frac{M_+}{N_+}, \qquad T_- = \frac{M_-}{N_-}.
+\]
+Using the definitions of the two sectors,
+\[
+N_+ = rN, \qquad N_- = (1-r)N,
+\]
+\[
+M_+ = \frac{M_0}{r}, \qquad M_- = \frac{M_0(1-r)}{r},
+\]
+we obtain
+\[
+T_+ = \frac{M_0}{r^2 N}, \qquad T_- = \frac{M_0}{rN}.
+\]
+Substituting these expressions into the matching condition yields
+\[
+r \cdot \frac{r^2N}{M_0} = (1-r)\cdot \frac{rN}{M_0},
+\]
+which simplifies to
+\[
+r^2 + r - 1 = 0.
+\]
+Therefore the reverse ratio that makes the two distributions meet at the origin is
+\[
+r = \frac{\sqrt{5}-1}{2} \approx 0.618.
+\]
+This is the value used in the simulations to compare the positive and negative branches of the double-sided Boltzmann-Gibbs distribution.
+
+
+
+\subsection{Simulation results}
+One way of limiting the total debt in the economy, as we explained in section \ref{sec:debtModel}, is the so-called required reserve ratio $r$~\cite{xi2005required}.
+The value of r was set to $r = 0.618$ in order to have the two branches of the double-sided Boltzmann-Gibbs distribution meet at the origin.
+The computation of this value is shown in Appendix \ref{app:mathematics}.
+
+The results are shown in Fig.~\ref{fig:ReverseRatioImage}, where the histogram of the money distribution is plotted along with the theoretical double-sided Boltzmann-Gibbs distribution.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{ReverseRatioImage.png}
+    \caption{The histogram shows the money distribution of agents after $10^7$ number of transactions, while the red and blue lines represent the theoretical double-sided Boltzmann-Gibbs distribution.
+                The simulation was performed with $N=500$, $M_0 = 5000$, and $\Delta m = 1$. The reserve ratio is set to $r = 0.618$ so that the two branches of the distribution meet at the origin.}
+    \label{fig:ReverseRatioImage}
+\end{figure}

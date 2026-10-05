@@ -24,7 +24,7 @@ It is possible to see the results in Figure \ref{fig:NoDebtImage}, where the his
 \subsection{Money Distribution with Debt}
 
 The situation now is similar but in this case the agents can have negative balances up to a maximal threshold debt~($md$).
-As it is shown in Fig.~\ref{fig:DebtImage}, after many interactions, the population seems to follow a Boltzmann-Gibbs distribution.
+As shown in Fig.~\ref{fig:DebtImage}, after many interactions, the population seems to follow a Boltzmann-Gibbs distribution.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.4\textwidth]{DebtImage.png}
@@ -33,21 +33,9 @@ As it is shown in Fig.~\ref{fig:DebtImage}, after many interactions, the populat
     \label{fig:DebtImage}
 \end{figure}
 
-One way of limiting the total debt in the economy, as we explained in section \ref{sec:debtModel}, is the so-called required reserve ratio $r$~\cite{xi2005required}.
-The value of r was set to $r = 0.618$ in order to have the two branches of the double-sided Boltzmann-Gibbs distribution meet at the origin.
-The computation of this value is shown in Appendix \ref{app:mathematics}.
-
-The results are shown in Fig.~\ref{fig:ReverseRatioImage}, where the histogram of the money distribution is plotted along with the theoretical double-sided Boltzmann-Gibbs distribution.
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.4\textwidth]{ReverseRatioImage.png}
-    \caption{The histogram shows the money distribution of agents after $10^7$ number of transactions, while the red and blue lines represent the theoretical double-sided Boltzmann-Gibbs distribution.
-                The simulation was performed with $N=500$, $M_0 = 5000$, and $\Delta m = 1$. The reserve ratio is set to $r = 0.618$ so that the two branches of the distribution meet at the origin.}
-    \label{fig:ReverseRatioImage}
-\end{figure}
 
 \subsection{Money Distribution with Proportional money transfers}
-Let's now consider a scenario where agents have a saving propensity $\gamma$.
+Let's now consider a scenario where agents exchange only a fraction $\gamma$ of their money.
 Each agent can exchange only a fraction of their money, which is determined by the saving propensity.
 The results of the simulation are shown in Fig.~\ref{fig:SavingPropensityImage}, where the histogram of the money distribution is plotted along with the theoretical Gamma distribution.
 \begin{figure}[H]
@@ -58,16 +46,3 @@ The results of the simulation are shown in Fig.~\ref{fig:SavingPropensityImage},
     \label{fig:SavingPropensityImage}
 \end{figure}
 
-\subsection{Entropy Comparison}
-In this section, we compare the entropy of the different models studied in the previous sections.
-The entropy is computed using the formula $S = -\sum_i P_i \ln P_i$, where $P_i$ is the probability of finding an agent with money $m_i$.
-In Fig.~\ref{fig:EntropyComparison}, it is possible to notice that the model that reaches maximum entropy first is the proportional money transfer model
-that has a sharp increase in entropy. The other models follow, with the basic money distribution model and finally the money distribution with debt model.
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.4\textwidth]{EntropyComparison.png}
-    \caption{The plot shows the entropy of the different models studied in the previous sections.
-                The simulation was performed with $N=50$, $M = 1000$, and $\Delta m = 1$. The proportional rate is set to $\gamma = 1/3$ while the maximum debt is set to $D = 10$. 
-    }
-    \label{fig:EntropyComparison}
-\end{figure}    
