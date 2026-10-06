@@ -3,24 +3,15 @@
 % ============================================================================
 
 \section*{Abstract}
-Statistical mechanics describes how macroscopic regularities emerge from the
-interactions of many microscopic degrees of freedom. We apply this framework to
-a closed economy in which $N$ agents exchange a conserved quantity, money, through
-random pairwise transactions, in analogy with energy exchange between particles
-in a gas. Using agent based simulations, we study how the stationary money
-distribution depends on the transaction rules and on the boundary conditions.
-When transactions are random and reversible, the money distribution relaxes to the
-Boltzmann-Gibbs exponential law, $P(m)\propto e^{-m/T}$, with an effective
-temperature $T=M/N$ equal to the average money per agent. Allowing agents to
-borrow up to a maximum debt $m_d$ leaves the exponential form unchanged but shifts
-the lower boundary and raises the temperature to $T_d=m_d+M/N$. When debt is
-limited by a required reserve ratio, the distribution becomes double-sided, with
-separately conserved positive and negative money. In contrast, when agents
-transfer a fixed fraction of their money, detailed balance is broken and the
-stationary distribution deviates from the exponential, taking a Gamma like form.
-Finally, a multiplicative stochastic model of wealth, in which prices fluctuate
-and total wealth is not conserved, that leads to a power-law tail at high wealth is studied.
 
+Econophysics is a field that applies concepts from statistical mechanics to economic systems, particularly in understanding money distribution among interacting agents. 
+This field employs agent based simulations to validate theoretical predictions, providing insights into the dynamics of economic systems through the lens of statistical mechanics.
+
+The first basic assumption is that money is a conserved quantity during transactions, similar to energy in physical systems.
+The equilibrium distribution of money can be derived by maximizing Gibbs entropy under the constraint of total money conservation.
+Three different models of money distribution are considered: one without debt, one with debt, and one with proportional money transfers based on how much money each agent is eager to pay.
+
+Then a more complex model is considered, where the wealth of each agent evolves according to a stochastic differential equation, leading to an inverse-gamma distribution of wealth.
 
 
 \newpage
