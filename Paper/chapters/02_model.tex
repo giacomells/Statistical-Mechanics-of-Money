@@ -392,6 +392,26 @@ for this variable becomes
   \label{eq:16}
 \end{equation}
 
+Substituting $\eta_i(t)-\langle\eta\rangle=\sqrt{2\sigma^2}\,\xi_i(t)$, with $\xi_i(t)\,dt=dW_i(t)$
+and using the Stratonovich-to-It\^o drift correction that is
+\begin{equation}
+\frac{1}{2}b(\tilde{w}_i)b'(\tilde{w}_i)
+=
+\sigma^2\tilde{w}_i,
+\qquad
+b(\tilde{w}_i)=\sqrt{2\sigma^2}\,\tilde{w}_i.
+\end{equation}
+it cancels the explicit $-\sigma^2\tilde{w}_i$ drift in Eq.~\eqref{eq:16}, yielding the equivalent It\^o differential equation for the relative wealth $\tilde{w}_i$ 
+\begin{equation}
+\label{eq:ito-Relativewealth}
+d\tilde{w}_i
+=
+J(1-\tilde{w}_i)\,dt
++
+\sqrt{2\sigma^2}\,\tilde{w}_i\,dW_i(t).
+\end{equation}
+
+
 The probability distribution $P(\tilde{w},t)$ for the stochastic differential equation~(\ref{eq:16}) is governed by the Fokker-Planck equation
 
 \begin{equation}
@@ -411,3 +431,4 @@ This is a inverse Gamma distribution, which is a power law distribution with an 
 In particular, it combines a power-law tail for large wealth with an exponential suppression of very small wealth.
 
 
+\newpage
